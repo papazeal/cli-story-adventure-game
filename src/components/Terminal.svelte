@@ -50,6 +50,9 @@
     if (choiceIndex >= 0 && choiceIndex < currentChoices.length) {
       const selectedChoice = currentChoices[choiceIndex];
 
+      // Play audio based on the choice text
+      audioManager.playChoiceTone(selectedChoice.text);
+
       // Add the selected choice to terminal
       addLine("input", `> ${selectedChoice.text}`);
 
@@ -65,9 +68,6 @@
   function displayCurrentScene() {
     const scene = gameState.getCurrentScene();
     if (scene) {
-      // Play scene-specific tone
-      audioManager.playSceneTone(scene.id);
-      
       // Remove any existing choice lines to prevent duplication
       terminalLines = terminalLines.filter((line) => line.type !== "choices");
 

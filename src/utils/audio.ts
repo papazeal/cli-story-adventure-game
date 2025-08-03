@@ -72,59 +72,181 @@ export class AudioManager {
     }
   }
 
-  // Play a sequence of tones
+  // Play a sequence of tones with voice-like timing
   async playToneSequence(
     frequencies: number[],
     noteDuration: number = 400,
     volume: number = 1
   ) {
     for (let i = 0; i < frequencies.length; i++) {
+      // Voice-like timing: slight overlap between notes for smoother flow
+      const delay = i * (noteDuration * 0.7) / 1000; // 30% overlap for smooth voice effect
       await this.playTone(
         frequencies[i],
         noteDuration,
         volume,
-        i * (noteDuration / 1000)
+        delay
       );
     }
   }
 
-  // Get melody for each scene - endings have 3 notes, others have 1 note
+  // Get voice-like melody that mimics the emotional tone and rhythm of story text
   getSceneMelody(sceneId: string): number[] {
-    // List of ending scene IDs
-    const endingScenes = [
-      'hero', 'otherworld', 'friendship', 'treasure', 'rescue',
-      'music_maker', 'dance_teacher', 'laughter_bringer', 
-      'helper_finder', 'cloud_watcher', 'magic_gardener', 'star_guide'
-    ];
+    const voiceMelodies: Record<string, number[]> = {
+      // Menu scenes - welcoming, inviting voice
+      welcome: [523.25, 659.25], // "Welcome!" - bright, inviting
+      help: [440.00, 523.25, 493.88], // "How to play" - explanatory, patient
+      
+      // Adventure scenes - curious, wondering voice
+      intro: [392.00, 440.00, 523.25, 493.88], // "You wake up..." - mysterious awakening
+      river: [369.99, 440.00, 369.99, 329.63], // "babbling stream" - flowing water sound
+      tree: [392.00, 523.25, 659.25, 783.99], // "climb up high" - ascending excitement
+      backpack: [440.00, 523.25, 440.00, 493.88], // "look and find" - searching, discovery
+      
+      // Social scenes - warm, friendly voice  
+      village: [523.25, 587.33, 659.25, 523.25], // "cheerful village" - warm community
+      helper: [440.00, 523.25, 587.33, 659.25], // "kind grandma" - gentle, caring
+      friends: [659.25, 783.99, 880.00, 783.99], // "best day ever!" - pure joy
+      
+      // Nature/Magic scenes - mystical, wonder-filled voice
+      creature: [277.18, 369.99, 440.00], // "big fluffy wolf" - gentle, mysterious
+      cave: [246.94, 329.63, 369.99, 329.63], // "glowing pictures" - echoing wonder
+      portal: [659.25, 783.99, 987.77, 1174.66], // "rainbow door!" - magical ascent
+      rest: [392.00, 329.63, 277.18], // "peaceful rest" - calming descent
+      
+      // Intermediate scenes - transitional voices
+      dance_party: [587.33, 659.25, 783.99, 659.25, 587.33], // "join the celebration!" - rhythmic joy
+      star_watching: [493.88, 659.25, 783.99, 659.25], // "beautiful stars" - wonder and awe
+      garden_discovery: [392.00, 493.88, 523.25, 659.25], // "magical flowers grow" - blooming discovery
+      
+      // Ending scenes - triumphant, satisfying voice conclusions
+      hero: [523.25, 659.25, 783.99, 880.00], // "Forest Helper!" - proud achievement
+      otherworld: [659.25, 783.99, 1046.50, 1174.66], // "magical land!" - ethereal wonder
+      friendship: [440.00, 523.25, 659.25, 783.99], // "best friend!" - warm, loving
+      treasure: [523.25, 659.25, 783.99, 1046.50], // "shiny crystals!" - sparkling discovery
+      rescue: [392.00, 493.88, 587.33, 523.25], // "safely home" - relieved, content
+      music_maker: [523.25, 659.25, 783.99, 659.25, 523.25], // "forest concerts!" - musical celebration
+      dance_teacher: [587.33, 659.25, 783.99, 880.00, 783.99], // "joyful dancing!" - rhythmic happiness
+      laughter_bringer: [659.25, 783.99, 880.00, 987.77], // "make them smile!" - bubbling laughter
+      helper_finder: [440.00, 523.25, 659.25, 523.25], // "help others!" - caring, reliable
+      cloud_watcher: [493.88, 659.25, 783.99, 880.00], // "read the sky!" - elevated wisdom
+      magic_gardener: [392.00, 523.25, 659.25, 783.99], // "beautiful garden!" - growing beauty
+      star_guide: [659.25, 783.99, 987.77, 1174.66] // "guide by stars!" - celestial wisdom
+    };
 
-    // Check if this is an ending scene
-    if (endingScenes.includes(sceneId)) {
-      // Ending scenes get 3-note melodies
-      const endingMelodies: Record<string, number[]> = {
-        hero: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (triumphant)
-        otherworld: [659.25, 783.99, 1046.50], // E5 -> G5 -> C6 (ethereal)
-        friendship: [440.00, 523.25, 659.25], // A4 -> C5 -> E5 (warm)
-        treasure: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (shiny)
-        rescue: [392.00, 493.88, 587.33], // G4 -> B4 -> D5 (safe)
-        music_maker: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (musical)
-        dance_teacher: [587.33, 659.25, 783.99], // D5 -> E5 -> G5 (joyful)
-        laughter_bringer: [659.25, 783.99, 880.00], // E5 -> G5 -> A5 (happy)
-        helper_finder: [440.00, 523.25, 659.25], // A4 -> C5 -> E5 (helpful)
-        cloud_watcher: [493.88, 659.25, 783.99], // B4 -> E5 -> G5 (sky)
-        magic_gardener: [392.00, 523.25, 659.25], // G4 -> C5 -> E5 (growing)
-        star_guide: [659.25, 783.99, 987.77] // E5 -> G5 -> B5 (stellar)
-      };
-      return endingMelodies[sceneId] || [523.25, 659.25, 783.99];
-    } else {
-      // All other scenes get 1 note (same pitch for consistency)
-      return [523.25]; // C5
-    }
+    return voiceMelodies[sceneId] || [440.00, 523.25]; // Default gentle voice
   }
 
-  // Play scene-specific melody (1 note for regular scenes, 3 notes for endings)
+  // Play choice-based melody that mimics the choice text emotion and action
+  async playChoiceTone(choiceText: string) {
+    const melody = this.getChoiceMelody(choiceText);
+    
+    // Adjust timing based on choice emotion
+    let noteDuration = 200; // Quick, responsive feedback
+    let volume = 0.5;
+    
+    // Choice-specific timing based on emotional content
+    if (choiceText.includes('🏠') || choiceText.includes('Main Menu')) {
+      noteDuration = 300; // Slower, more final
+    } else if (choiceText.includes('🚀') || choiceText.includes('Start')) {
+      noteDuration = 150; // Quick, exciting start
+    } else if (choiceText.includes('❓') || choiceText.includes('help')) {
+      noteDuration = 250; // Curious, questioning
+    }
+    
+    await this.playToneSequence(melody, noteDuration, volume);
+  }
+
+  // Get melody based on choice text content and emotion
+  getChoiceMelody(choiceText: string): number[] {
+    // Analyze choice text for emotional and action keywords
+    const text = choiceText.toLowerCase();
+    
+    // Movement/Direction choices
+    if (text.includes('go') || text.includes('follow') || text.includes('climb')) {
+      return [392.00, 523.25]; // G4 -> C5 (forward movement)
+    }
+    if (text.includes('back') || text.includes('return') || text.includes('go back')) {
+      return [523.25, 392.00]; // C5 -> G4 (returning)
+    }
+    if (text.includes('up') || text.includes('climb') || text.includes('high')) {
+      return [392.00, 523.25, 659.25]; // G4 -> C5 -> E5 (ascending)
+    }
+    if (text.includes('down') || text.includes('deeper') || text.includes('cave')) {
+      return [523.25, 392.00, 329.63]; // C5 -> G4 -> E4 (descending)
+    }
+
+    // Action choices
+    if (text.includes('look') || text.includes('study') || text.includes('check')) {
+      return [440.00, 493.88]; // A4 -> B4 (curious looking)
+    }
+    if (text.includes('use') || text.includes('eat') || text.includes('drink')) {
+      return [523.25, 587.33]; // C5 -> D5 (using/consuming)
+    }
+    if (text.includes('play') || text.includes('dance') || text.includes('join')) {
+      return [587.33, 659.25, 783.99]; // D5 -> E5 -> G5 (playful, joyful)
+    }
+    if (text.includes('help') || text.includes('teach') || text.includes('share')) {
+      return [440.00, 523.25, 659.25]; // A4 -> C5 -> E5 (caring, helpful)
+    }
+
+    // Emotional choices
+    if (text.includes('start') || text.includes('begin') || text.includes('🚀')) {
+      return [523.25, 659.25, 783.99]; // C5 -> E5 -> G5 (exciting start)
+    }
+    if (text.includes('yes') || text.includes('want') || text.includes('love')) {
+      return [523.25, 659.25]; // C5 -> E5 (positive affirmation)
+    }
+    if (text.includes('wait') || text.includes('stay') || text.includes('rest')) {
+      return [523.25, 440.00]; // C5 -> A4 (patient waiting)
+    }
+    if (text.includes('run') || text.includes('escape') || text.includes('away')) {
+      return [659.25, 523.25, 392.00]; // E5 -> C5 -> G4 (quick escape)
+    }
+
+    // Social choices
+    if (text.includes('friend') || text.includes('hello') || text.includes('say hi')) {
+      return [523.25, 659.25, 523.25]; // C5 -> E5 -> C5 (friendly greeting)
+    }
+    if (text.includes('thank') || text.includes('nice') || text.includes('kind')) {
+      return [440.00, 523.25, 587.33]; // A4 -> C5 -> D5 (grateful)
+    }
+
+    // Magic/Wonder choices
+    if (text.includes('magic') || text.includes('sparkle') || text.includes('✨')) {
+      return [659.25, 783.99, 987.77]; // E5 -> G5 -> B5 (magical sparkle)
+    }
+    if (text.includes('star') || text.includes('sky') || text.includes('cloud')) {
+      return [493.88, 659.25, 783.99]; // B4 -> E5 -> G5 (celestial)
+    }
+    if (text.includes('flower') || text.includes('garden') || text.includes('grow')) {
+      return [392.00, 523.25, 659.25]; // G4 -> C5 -> E5 (growing, blooming)
+    }
+
+    // Menu/Navigation choices
+    if (text.includes('main menu') || text.includes('🏠')) {
+      return [523.25, 659.25, 523.25, 392.00]; // C5 -> E5 -> C5 -> G4 (returning home)
+    }
+    if (text.includes('play again') || text.includes('🔄')) {
+      return [392.00, 523.25, 659.25, 523.25]; // G4 -> C5 -> E5 -> C5 (restart cycle)
+    }
+
+    // Default based on emoji emotions
+    if (text.includes('😊') || text.includes('😄') || text.includes('🎉')) {
+      return [523.25, 659.25, 783.99]; // C5 -> E5 -> G5 (happy)
+    }
+    if (text.includes('🤔') || text.includes('❓')) {
+      return [440.00, 493.88, 440.00]; // A4 -> B4 -> A4 (questioning)
+    }
+
+    // Default neutral choice
+    return [523.25, 587.33]; // C5 -> D5 (neutral positive)
+  }
+
+  // Keep the old method for backward compatibility (now unused)
   async playSceneTone(sceneId: string) {
-    const melody = this.getSceneMelody(sceneId);
-    await this.playToneSequence(melody, 300, 0.5); // 300ms per note
+    // This method is now deprecated in favor of choice-based audio
+    return;
   }
 }
 

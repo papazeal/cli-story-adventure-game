@@ -45,5 +45,5 @@
     </div>
   </div>
 {:else if showText}
-  <span>{text}</span>
+  <span class="whitespace-pre-line">{text}</span>
 {/if}

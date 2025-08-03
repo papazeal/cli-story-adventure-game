@@ -96,6 +96,7 @@ export class AudioManager {
       // Menu scenes - welcoming, inviting voice
       welcome: [523.25, 659.25], // "Welcome!" - bright, inviting
       help: [440.00, 523.25, 493.88], // "How to play" - explanatory, patient
+      changelog: [587.33, 659.25, 783.99, 659.25], // "What's new!" - exciting updates
       
       // Adventure scenes - curious, wondering voice
       intro: [392.00, 440.00, 523.25, 493.88], // "You wake up..." - mysterious awakening
@@ -123,7 +124,7 @@ export class AudioManager {
       hero: [523.25, 659.25, 783.99, 880.00], // "Forest Helper!" - proud achievement
       otherworld: [659.25, 783.99, 1046.50, 1174.66], // "magical land!" - ethereal wonder
       friendship: [440.00, 523.25, 659.25, 783.99], // "best friend!" - warm, loving
-      treasure: [523.25, 659.25, 783.99, 1046.50], // "shiny crystals!" - sparkling discovery
+      treasure_solved: [523.25, 659.25, 783.99, 1046.50], // "shiny crystals!" - sparkling discovery
       rescue: [392.00, 493.88, 587.33, 523.25], // "safely home" - relieved, content
       music_maker: [523.25, 659.25, 783.99, 659.25, 523.25], // "forest concerts!" - musical celebration
       dance_teacher: [587.33, 659.25, 783.99, 880.00, 783.99], // "joyful dancing!" - rhythmic happiness
@@ -229,6 +230,32 @@ export class AudioManager {
     }
     if (text.includes('play again') || text.includes('🔄')) {
       return [392.00, 523.25, 659.25, 523.25]; // G4 -> C5 -> E5 -> C5 (restart cycle)
+    }
+    if (text.includes("what's new") || text.includes('📝')) {
+      return [587.33, 659.25, 783.99]; // D5 -> E5 -> G5 (excited about updates)
+    }
+
+    // Puzzle-specific choices
+    if (text.includes('answer:') || text.includes('🔢')) {
+      return [440.00, 523.25, 587.33]; // A4 -> C5 -> D5 (calculating)
+    }
+    if (text.includes('try again') || text.includes('🔄')) {
+      return [392.00, 440.00, 523.25]; // G4 -> A4 -> C5 (encouraging retry)
+    }
+    if (text.includes('think more') || text.includes('🤔')) {
+      return [493.88, 440.00, 493.88]; // B4 -> A4 -> B4 (pondering)
+    }
+    if (text.includes('touch') && (text.includes('red') || text.includes('🔴'))) {
+      return [659.25, 783.99]; // E5 -> G5 (bright, red-like)
+    }
+    if (text.includes('touch') && (text.includes('yellow') || text.includes('🟡'))) {
+      return [587.33, 659.25]; // D5 -> E5 (sunny, yellow-like)
+    }
+    if (text.includes('touch') && (text.includes('blue') || text.includes('🔵'))) {
+      return [440.00, 523.25]; // A4 -> C5 (cool, blue-like)
+    }
+    if (text.includes('touch') && (text.includes('green') || text.includes('🟢'))) {
+      return [392.00, 493.88]; // G4 -> B4 (natural, green-like)
     }
 
     // Default based on emoji emotions

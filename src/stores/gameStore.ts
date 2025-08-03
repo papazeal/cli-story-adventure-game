@@ -78,11 +78,20 @@ const scenes: Scene[] = [
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
       { text: "❓ How to Play", nextSceneId: "help" },
+      { text: "📝 What's New", nextSceneId: "changelog" },
     ],
   },
   {
     id: "help",
     text: "📖 How to Play:\n\n• 🖱️ Click on any choice to select it\n• 📚 Read the story and make decisions\n• 🌟 Different choices lead to different endings!\n• 🎈 Have fun exploring the magical forest!\n\nReady to begin your adventure?",
+    choices: [
+      { text: "🚀 Start Game", nextSceneId: "intro" },
+      { text: "🔙 Back to Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "changelog",
+    text: "📝 What's New in the Forest! 🌲\n\n🆕 **Latest Updates:**\n• 🧩 Added fun puzzles! Solve riddles and color games!\n• 🎵 New choice sounds! Each button makes music!\n• 🌈 Rainbow door puzzle in the magical portal!\n• 🔢 Number riddle in the treasure cave!\n• 🎵 Rhyming game with village kids!\n• ✨ 12 different story endings to discover!\n• 🎶 Smart audio that matches what you choose!\n\n**Coming Soon:** More puzzles and adventures! 🌟",
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
       { text: "🔙 Back to Menu", nextSceneId: "welcome" },
@@ -129,8 +138,34 @@ const scenes: Scene[] = [
     text: "🏘️ You find a cheerful little village! People are playing music and dancing in the square! 🎵💃 A kind grandma 👵 comes to say hello with a warm smile. Some kids are playing fun games nearby! 🎈",
     choices: [
       { text: "🏠 Go with the nice grandma", nextSceneId: "helper" },
-      { text: "🎈 Play with the village kids", nextSceneId: "friends" },
+      { text: "🎈 Play with the village kids", nextSceneId: "rhyme_puzzle" },
       { text: "🎵 Join the music and dancing", nextSceneId: "dance_party" },
+    ],
+  },
+  {
+    id: "rhyme_puzzle",
+    text: "🎈 The village kids are playing a rhyming game! A wise owl 🦉 hoots: 'To join our games, find the word that rhymes with GATE!' The kids giggle and wait for your answer! 🤔",
+    choices: [
+      { text: "🍰 CAKE", nextSceneId: "rhyme_wrong" },
+      { text: "🎱 EIGHT", nextSceneId: "rhyme_solved" },
+      { text: "🐭 MOUSE", nextSceneId: "rhyme_wrong" },
+      { text: "🤔 Think more", nextSceneId: "village" },
+    ],
+  },
+  {
+    id: "rhyme_solved",
+    text: "🎉 'EIGHT!' you say! The kids cheer! 'Yes! GATE and EIGHT rhyme!' 🦉 The wise owl nods approvingly. You solved the puzzle and now you can join their games!",
+    choices: [
+      { text: "🎈 Play games with new friends", nextSceneId: "friends" },
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "rhyme_wrong",
+    text: "🦉 The owl hoots gently: 'Not quite! Think of a word that sounds like GATE at the end... GA-ATE... what else ends in ATE?' The kids encourage you to try again! 😊",
+    choices: [
+      { text: "🔄 Try the rhyme again", nextSceneId: "rhyme_puzzle" },
+      { text: "🏃‍♂️ Go back to the village", nextSceneId: "village" },
     ],
   },
   {
@@ -146,19 +181,95 @@ const scenes: Scene[] = [
     id: "cave",
     text: "🕳️ You find a pretty cave with glowing pictures on the walls! It feels warm and magical inside ✨⚡. You also notice beautiful glowing flowers growing near the entrance! 🌸",
     choices: [
-      { text: "🔦 Go deeper with your flashlight", nextSceneId: "treasure" },
-      { text: "📜 Look at the pretty pictures", nextSceneId: "treasure" },
+      { text: "🔦 Go deeper with your flashlight", nextSceneId: "treasure_puzzle" },
+      { text: "📜 Look at the pretty pictures", nextSceneId: "cave_pictures" },
       { text: "🌸 Study the magical flowers", nextSceneId: "garden_discovery" },
       { text: "⚠️ Go back outside", nextSceneId: "intro" },
     ],
   },
   {
-    id: "portal",
-    text: "🌊 Your magic map shows you a sparkly rainbow door 🌀 behind a waterfall! It looks like it goes to a fun place 🌌!",
+    id: "treasure_puzzle",
+    text: "💰 Deep in the cave, you find a glowing treasure chest! But it has a number lock! 🔢 There's a riddle carved in sparkly letters: 'A rabbit has 4 legs 🐰, a bird has 2 legs 🐦, and a person with a walking stick has 3 legs 🚶‍♂️🦯. How many legs in total?' 🤔",
     choices: [
-      { text: "🚪 Jump through the rainbow door", nextSceneId: "otherworld" },
-      { text: "🤚 Touch the sparkles", nextSceneId: "otherworld" },
+      { text: "🔢 Answer: 6 legs", nextSceneId: "treasure_wrong" },
+      { text: "🔢 Answer: 9 legs", nextSceneId: "treasure_solved" },
+      { text: "🔢 Answer: 12 legs", nextSceneId: "treasure_wrong" },
+      { text: "🤔 Think more and go back", nextSceneId: "cave" },
+    ],
+  },
+  {
+    id: "treasure_solved",
+    text: "🎉 BRILLIANT! The lock clicks open! You figured out: 4 + 2 + 3 = 9 legs! Inside the chest are beautiful crystals that make you feel smart and happy! 💎🧠✨",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "treasure_wrong",
+    text: "🔒 The lock stays closed. A friendly crystal whispers: 'Count carefully... 4 rabbit legs + 2 bird legs + 3 legs with walking stick = ?' Try again! 🤗",
+    choices: [
+      { text: "🔄 Try the riddle again", nextSceneId: "treasure_puzzle" },
+      { text: "🏃‍♂️ Go back to explore", nextSceneId: "cave" },
+    ],
+  },
+  {
+    id: "cave_pictures",
+    text: "📜 The glowing pictures show the story of the forest! They tell about magical creatures, friendly villages, and hidden treasures. Reading them makes you feel wise! 📚✨",
+    choices: [
+      { text: "🔦 Now go find the treasure", nextSceneId: "treasure_puzzle" },
+      { text: "🏃‍♂️ Go back outside", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "portal",
+    text: "🌊 Your magic map shows you a sparkly rainbow door 🌀 behind a waterfall! But wait... there are 4 colored gems that need to be touched in the right order! 💎 The map whispers: 'Follow the colors of a real rainbow' 🌈",
+    choices: [
+      { text: "🔴 Touch RED gem first", nextSceneId: "portal_puzzle" },
+      { text: "🟡 Touch YELLOW gem first", nextSceneId: "portal_wrong" },
+      { text: "🔵 Touch BLUE gem first", nextSceneId: "portal_wrong" },
+      { text: "🟢 Touch GREEN gem first", nextSceneId: "portal_wrong" },
       { text: "📍 Remember this place and go back", nextSceneId: "village" },
+    ],
+  },
+  {
+    id: "portal_puzzle",
+    text: "✨ The RED gem glows brightly! Now which color comes next in a rainbow? 🌈",
+    choices: [
+      { text: "🟡 Touch YELLOW gem second", nextSceneId: "portal_puzzle2" },
+      { text: "🔵 Touch BLUE gem second", nextSceneId: "portal_wrong" },
+      { text: "🟢 Touch GREEN gem second", nextSceneId: "portal_wrong" },
+    ],
+  },
+  {
+    id: "portal_puzzle2",
+    text: "🌟 RED and YELLOW gems are glowing! What's the third color in a rainbow? 🌈",
+    choices: [
+      { text: "🔵 Touch BLUE gem third", nextSceneId: "portal_puzzle3" },
+      { text: "🟢 Touch GREEN gem third", nextSceneId: "portal_wrong" },
+    ],
+  },
+  {
+    id: "portal_puzzle3",
+    text: "💫 RED, YELLOW, and BLUE gems are all glowing! What's the last color? 🌈",
+    choices: [
+      { text: "🟢 Touch GREEN gem last", nextSceneId: "portal_solved" },
+      { text: "🔴 Touch RED gem again", nextSceneId: "portal_wrong" },
+    ],
+  },
+  {
+    id: "portal_solved",
+    text: "🎉 AMAZING! All four gems glow in rainbow colors and the magical door opens wide! You solved the rainbow puzzle! ✨🌈",
+    choices: [
+      { text: "🚪 Step through the magical door", nextSceneId: "otherworld" },
+      { text: "🏃‍♂️ Go back to explore more", nextSceneId: "village" },
+    ],
+  },
+  {
+    id: "portal_wrong",
+    text: "💫 The gems flicker but don't stay bright. A gentle voice says: 'Think about rainbow colors... Red comes first! 🌈' Try again!",
+    choices: [
+      { text: "🔄 Try the puzzle again", nextSceneId: "portal" },
+      { text: "📍 Go back to the village", nextSceneId: "village" },
     ],
   },
   {
@@ -230,13 +341,6 @@ const scenes: Scene[] = [
   {
     id: "friendship",
     text: "🐺❤️ The fluffy wolf becomes your best friend! Together you play in the forest every day 🌲🌀. The wolf teaches you how to talk to all the animals 🛡️. You have the most fun adventures together! ✨🏰",
-    choices: [
-      { text: "🏠 Main Menu", nextSceneId: "welcome" },
-    ],
-  },
-  {
-    id: "treasure",
-    text: "💰 In the cave, you find a box full of shiny crystals 🏺 that make you feel happy and smart ⚡🧠. Now you know you came here to take care of this special place! 🛡️✨",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
     ],

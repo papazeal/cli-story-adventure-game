@@ -90,7 +90,7 @@ const scenes: Scene[] = [
   },
   {
     id: "intro",
-    text: "🌲 You wake up in a magic forest! The trees are very big and you can hear fun sounds. You were playing in the woods but now you are lost. 😊",
+    text: "🌲 You wake up in a magical forest! The trees sparkle with dewdrops ✨ and you can hear birds singing pretty songs 🎵. You were exploring and now you're on a fun adventure! 😊",
     choices: [
       { text: "🏞️ Go to the water sounds", nextSceneId: "river" },
       { text: "🌳 Climb a big tree", nextSceneId: "tree" },
@@ -99,7 +99,7 @@ const scenes: Scene[] = [
   },
   {
     id: "river",
-    text: "💧 You find a pretty stream with clean water! In the mud you see footprints - some from people and some from a big friendly animal. 🐾",
+    text: "💧 You find a babbling stream with crystal clear water! 🌊 In the soft mud you see footprints - some from people and some from a big friendly animal. The water makes peaceful sounds! 🐾✨",
     choices: [
       { text: "👤 Follow the people footprints", nextSceneId: "village" },
       { text: "🔍 Follow the big animal tracks", nextSceneId: "creature" },
@@ -108,16 +108,16 @@ const scenes: Scene[] = [
   },
   {
     id: "tree",
-    text: "🌳 You climb up a very tall tree! From the top, you can see a little town with smoke 🏘️💨 and a cool cave. 🕳️",
+    text: "🌳 You climb up a tall tree and reach the top! The view is amazing! ✨ You can see a cozy village with chimney smoke 🏘️💨 and a mysterious cave with twinkling lights! 🕳️⭐",
     choices: [
-      { text: "🏘️ Go to the town", nextSceneId: "village" },
+      { text: "🏘️ Go to the village", nextSceneId: "village" },
       { text: "🕳️ Check out the cave", nextSceneId: "cave" },
       { text: "🦅 Stay here and wait", nextSceneId: "rescue" },
     ],
   },
   {
     id: "backpack",
-    text: "🎒 You look in your bag and find cool things! A compass 🧭, some snacks 🍫, a flashlight 🔦, and a magic map 🗺️✨!",
+    text: "🎒 You look in your bag and find helpful things! A shiny compass 🧭, yummy snacks 🍫, a bright flashlight 🔦, and a special map with glowing lines! 🗺️✨",
     choices: [
       { text: "🧭 Use the compass", nextSceneId: "village" },
       { text: "🔮 Look at the magic map", nextSceneId: "portal" },
@@ -126,11 +126,11 @@ const scenes: Scene[] = [
   },
   {
     id: "village",
-    text: "🏘️ You find a happy little town! The people are very nice and a kind grandma 👵 comes to say hello. She wants to help you!",
+    text: "🏘️ You find a cheerful little village! People are playing music and dancing in the square! 🎵💃 A kind grandma 👵 comes to say hello with a warm smile. Some kids are playing fun games nearby! 🎈",
     choices: [
       { text: "🏠 Go with the nice grandma", nextSceneId: "helper" },
       { text: "🎈 Play with the village kids", nextSceneId: "friends" },
-      { text: "🏃‍♂️ Say bye and keep exploring", nextSceneId: "intro" },
+      { text: "🎵 Join the music and dancing", nextSceneId: "dance_party" },
     ],
   },
   {
@@ -144,10 +144,11 @@ const scenes: Scene[] = [
   },
   {
     id: "cave",
-    text: "🕳️ You find a pretty cave with glowing pictures on the walls! It feels warm and magical inside ✨⚡.",
+    text: "🕳️ You find a pretty cave with glowing pictures on the walls! It feels warm and magical inside ✨⚡. You also notice beautiful glowing flowers growing near the entrance! 🌸",
     choices: [
       { text: "🔦 Go deeper with your flashlight", nextSceneId: "treasure" },
       { text: "📜 Look at the pretty pictures", nextSceneId: "treasure" },
+      { text: "🌸 Study the magical flowers", nextSceneId: "garden_discovery" },
       { text: "⚠️ Go back outside", nextSceneId: "intro" },
     ],
   },
@@ -175,6 +176,34 @@ const scenes: Scene[] = [
     choices: [
       { text: "🏠 Follow the fireflies", nextSceneId: "village" },
       { text: "✨ Dance with the fireflies", nextSceneId: "friends" },
+      { text: "⭐ Look up at the beautiful stars", nextSceneId: "star_watching" },
+    ],
+  },
+  {
+    id: "dance_party",
+    text: "🎵💃 You join the village music and dancing! Everyone is so happy to have you join their celebration! The music makes your heart feel light and joyful! ✨",
+    choices: [
+      { text: "🎶 Learn to make music with them", nextSceneId: "music_maker" },
+      { text: "💃 Teach them new dance moves", nextSceneId: "dance_teacher" },
+      { text: "😊 Help shy people join the fun", nextSceneId: "laughter_bringer" },
+    ],
+  },
+  {
+    id: "star_watching",
+    text: "⭐🌙 You look up at the sparkling night sky! The stars are so bright and beautiful! You notice they seem to make patterns and tell stories about adventures! ✨",
+    choices: [
+      { text: "🧭 Learn to navigate by the stars", nextSceneId: "star_guide" },
+      { text: "☁️ Watch the clouds drift by", nextSceneId: "cloud_watcher" },
+      { text: "🔍 Help others find their way", nextSceneId: "helper_finder" },
+    ],
+  },
+  {
+    id: "garden_discovery",
+    text: "🌸✨ You discover that these magical flowers can grow anywhere! You learn their secrets and how to help other plants grow strong and beautiful too! 🌻🌿",
+    choices: [
+      { text: "🌱 Become a master gardener", nextSceneId: "magic_gardener" },
+      { text: "🔍 Help others find these flowers", nextSceneId: "helper_finder" },
+      { text: "🏠 Share the discovery with the village", nextSceneId: "village" },
     ],
   },
   {
@@ -215,6 +244,55 @@ const scenes: Scene[] = [
   {
     id: "rescue",
     text: "🚁 A rescue helicopter finds you! You go home safely 🏢, but you always remember the magical forest and plan to visit again soon! 🌲😊",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "music_maker",
+    text: "🎵✨ You become the Forest Music Maker! You learn to play beautiful songs with the animals. The birds sing harmony 🐦🎶, the frogs play drums on lily pads 🐸🥁, and everyone loves your forest concerts! 🌲🎼",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "dance_teacher",
+    text: "💃🕺 You become a happy dance teacher in the forest! You teach all the animals fun, gentle dances. The rabbits hop-dance 🐰, the bears do slow waltzes 🐻, and you have the most joyful dance parties! 🎵✨",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "laughter_bringer",
+    text: "😊🌟 You become the Forest Laughter Bringer! You help all the sad animals feel happy again with gentle jokes and fun games. Everyone loves spending time with you because you make them smile! 😄💫",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "helper_finder",
+    text: "🔍💝 You become the Forest Helper Finder! You're really good at helping lost animals find their way home and helping friends find each other. Everyone knows they can count on you when they need help! 🏠✨",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "cloud_watcher",
+    text: "☁️⭐ You become a Cloud Watcher! You learn to read the shapes in the clouds and predict the weather. You help farmers know when to plant and help everyone prepare for sunny or rainy days! 🌦️🌱",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "magic_gardener",
+    text: "🌻🔮 You become a Magic Gardener! You learn to grow the most beautiful flowers and help plants grow big and strong. Your garden becomes a peaceful place where all creatures come to rest! 🌸🦋",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+    ],
+  },
+  {
+    id: "star_guide",
+    text: "⭐🧭 You become a Star Guide! You learn to read the stars and help travelers find their way at night. Your knowledge of the sky helps everyone feel safe when it gets dark, and you love sharing stories about constellations! 🌙✨",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
     ],

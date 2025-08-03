@@ -88,45 +88,43 @@ export class AudioManager {
     }
   }
 
-  // Get 2-note melody for each scene
+  // Get melody for each scene - endings have 3 notes, others have 1 note
   getSceneMelody(sceneId: string): number[] {
-    const sceneMelodies: Record<string, number[]> = {
-      // Menu scenes - welcoming intervals
-      welcome: [523.25, 659.25], // C5 -> E5 (major third up, welcoming)
-      help: [440.0, 523.25], // A4 -> C5 (rising, helpful)
+    // List of ending scene IDs
+    const endingScenes = [
+      'hero', 'otherworld', 'friendship', 'treasure', 'rescue',
+      'music_maker', 'dance_teacher', 'laughter_bringer', 
+      'helper_finder', 'cloud_watcher', 'magic_gardener', 'star_guide'
+    ];
 
-      // Adventure scenes - curious/exploratory
-      intro: [329.63, 369.99], // E4 -> F#4 (mysterious step up)
-      river: [369.99, 329.63], // F#4 -> E4 (flowing down like water)
-      tree: [392.0, 493.88], // G4 -> B4 (climbing up)
-      backpack: [392.0, 349.23], // G4 -> F4 (searching down)
-
-      // Social scenes - warm/happy
-      village: [587.33, 659.25], // D5 -> E5 (warm step up)
-      helper: [523.25, 587.33], // C5 -> D5 (kind, gentle rise)
-      friends: [659.25, 783.99], // E5 -> G5 (joyful jump up)
-
-      // Nature scenes - magical/wonder
-      creature: [277.18, 369.99], // C#4 -> F#4 (gentle, animal call)
-      cave: [246.94, 220.0], // B3 -> A3 (echoing down into depths)
-      portal: [659.25, 987.77], // E5 -> B5 (magical leap up)
-      rest: [261.63, 246.94], // C4 -> B3 (peaceful descent)
-
-      // Ending scenes - satisfying resolutions
-      hero: [659.25, 880.0], // E5 -> A5 (triumphant rise)
-      otherworld: [783.99, 1046.5], // G5 -> C6 (ethereal ascent)
-      friendship: [523.25, 659.25], // C5 -> E5 (warm, loving)
-      treasure: [659.25, 739.99], // E5 -> F#5 (shiny, valuable)
-      rescue: [440.0, 523.25], // A4 -> C5 (safe resolution)
-    };
-
-    return sceneMelodies[sceneId] || [440.0, 523.25]; // Default to A4 -> C5
+    // Check if this is an ending scene
+    if (endingScenes.includes(sceneId)) {
+      // Ending scenes get 3-note melodies
+      const endingMelodies: Record<string, number[]> = {
+        hero: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (triumphant)
+        otherworld: [659.25, 783.99, 1046.50], // E5 -> G5 -> C6 (ethereal)
+        friendship: [440.00, 523.25, 659.25], // A4 -> C5 -> E5 (warm)
+        treasure: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (shiny)
+        rescue: [392.00, 493.88, 587.33], // G4 -> B4 -> D5 (safe)
+        music_maker: [523.25, 659.25, 783.99], // C5 -> E5 -> G5 (musical)
+        dance_teacher: [587.33, 659.25, 783.99], // D5 -> E5 -> G5 (joyful)
+        laughter_bringer: [659.25, 783.99, 880.00], // E5 -> G5 -> A5 (happy)
+        helper_finder: [440.00, 523.25, 659.25], // A4 -> C5 -> E5 (helpful)
+        cloud_watcher: [493.88, 659.25, 783.99], // B4 -> E5 -> G5 (sky)
+        magic_gardener: [392.00, 523.25, 659.25], // G4 -> C5 -> E5 (growing)
+        star_guide: [659.25, 783.99, 987.77] // E5 -> G5 -> B5 (stellar)
+      };
+      return endingMelodies[sceneId] || [523.25, 659.25, 783.99];
+    } else {
+      // All other scenes get 1 note (same pitch for consistency)
+      return [523.25]; // C5
+    }
   }
 
-  // Play scene-specific 2-note melody
+  // Play scene-specific melody (1 note for regular scenes, 3 notes for endings)
   async playSceneTone(sceneId: string) {
     const melody = this.getSceneMelody(sceneId);
-    await this.playToneSequence(melody, 200, 0.5); // 500ms per note, 2 notes in 1 second
+    await this.playToneSequence(melody, 300, 0.5); // 300ms per note
   }
 }
 

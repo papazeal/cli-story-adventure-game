@@ -120,6 +120,7 @@ export class AudioManager {
       star_watching: [493.88, 659.25, 783.99, 659.25], // "beautiful stars" - wonder and awe
       garden_discovery: [392.00, 493.88, 523.25, 659.25], // "magical flowers grow" - blooming discovery
       
+      
       // Ending scenes - triumphant, satisfying voice conclusions
       hero: [523.25, 659.25, 783.99, 880.00], // "Forest Helper!" - proud achievement
       otherworld: [659.25, 783.99, 1046.50, 1174.66], // "magical land!" - ethereal wonder
@@ -245,17 +246,26 @@ export class AudioManager {
     if (text.includes('think more') || text.includes('🤔')) {
       return [493.88, 440.00, 493.88]; // B4 -> A4 -> B4 (pondering)
     }
-    if (text.includes('touch') && (text.includes('red') || text.includes('🔴'))) {
+    if (text.includes('touch') && text.includes('red')) {
       return [659.25, 783.99]; // E5 -> G5 (bright, red-like)
     }
-    if (text.includes('touch') && (text.includes('yellow') || text.includes('🟡'))) {
+    if (text.includes('touch') && text.includes('orange')) {
+      return [622.25, 698.46]; // E♭5 -> F5 (warm, orange-like)
+    }
+    if (text.includes('touch') && text.includes('yellow')) {
       return [587.33, 659.25]; // D5 -> E5 (sunny, yellow-like)
     }
-    if (text.includes('touch') && (text.includes('blue') || text.includes('🔵'))) {
+    if (text.includes('touch') && text.includes('green')) {
+      return [392.00, 493.88]; // G4 -> B4 (natural, green-like)
+    }
+    if (text.includes('touch') && text.includes('blue')) {
       return [440.00, 523.25]; // A4 -> C5 (cool, blue-like)
     }
-    if (text.includes('touch') && (text.includes('green') || text.includes('🟢'))) {
-      return [392.00, 493.88]; // G4 -> B4 (natural, green-like)
+    if (text.includes('touch') && text.includes('indigo')) {
+      return [369.99, 440.00]; // F#4 -> A4 (deep, indigo-like)
+    }
+    if (text.includes('touch') && text.includes('violet')) {
+      return [329.63, 392.00]; // E4 -> G4 (royal, violet-like)
     }
 
     // Default based on emoji emotions

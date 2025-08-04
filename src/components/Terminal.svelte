@@ -117,12 +117,13 @@
       pendingChoices = [];
     }
   }
+
 </script>
 
 <div class="h-screen flex flex-col bg-gray-900 text-white">
   <!-- Terminal Content -->
   <div
-    class="flex-1 p-6 overflow-y-auto font-mono text-lg bg-slate-800"
+    class="flex-1 p-6 overflow-y-auto font-mono text-lg bg-slate-800 pb-100"
     bind:this={terminalElement}
   >
     {#each terminalLines as line (line.id)}
@@ -136,18 +137,18 @@
               : () => onLineComplete(line.id)}
           />
         {:else if line.type === "choices" && currentChoices.length > 0}
-          <div class="mt-2">
+          <div class="mt-6">
             {#each currentChoices as choice, index}
               <button
-                class="w-full text-left py-2 px-3 rounded transition-colors duration-200 hover:bg-gray-700 active:bg-gray-600 bg-transparent border-none text-white font-mono cursor-pointer"
+                class="w-full text-left py-2 px-3 rounded transition-colors duration-200 hover:bg-gray-700 active:bg-gray-600 bg-transparent border-none font-mono cursor-pointer text-lime-300"
                 on:click={() => selectChoice(index)}
               >
-                {index + 1}. {choice.text}
+                {index + 1}. {@html choice.text}
               </button>
             {/each}
           </div>
         {:else}
-          <div class="mb-10 text-amber-200">{line.content}</div>
+          <div class="mb-10 text-lime-300">{@html line.content}</div>
         {/if}
       </div>
     {/each}

@@ -13,7 +13,7 @@ All commands use `pnpm` as the package manager:
 
 ## Architecture Overview
 
-This is a CLI-style storytelling game built with Astro + Svelte + TailwindCSS that simulates a terminal interface for interactive fiction.
+**Forest Friends** is a CLI-style storytelling game built with Astro + Svelte + TailwindCSS that simulates a terminal interface for interactive fiction. It's a magical forest adventure game designed for kids, featuring talking animals, fun puzzles, and gentle humor throughout the story.
 
 ### Technology Stack
 - **Astro v5**: Static site generator with islands architecture for selective hydration
@@ -33,7 +33,7 @@ This is a CLI-style storytelling game built with Astro + Svelte + TailwindCSS th
 - `TypeWriter.svelte` - Typewriter animation effect for story text
 - Single-page application via `src/pages/index.astro`
 
-**Story Content**: Hardcoded as array of scene objects in `gameStore.ts` with branching narrative structure. Each scene has text content and choice objects that reference next scene IDs.
+**Story Content**: Hardcoded as array of scene objects in `gameStore.ts` with branching narrative structure. Each scene has text content and choice objects that reference next scene IDs. The story features kid-friendly language, gentle humor, talking animals, and multiple puzzle types including rainbow color sequences, math riddles, and rhyming games. There are 12+ different ending scenes based on player choices.
 
 **Terminal Simulation**: Authentic CLI appearance with:
 - Terminal header with macOS-style window controls

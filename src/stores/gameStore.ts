@@ -215,9 +215,10 @@ const scenes: Scene[] = [
   },
   {
     id: "cave_pictures",
-    text: "📜 The glowing pictures show the story of the forest! They tell about magical creatures, friendly villages, and hidden treasures. One picture shows a bunny wearing a tiny crown! Another shows a fish playing a guitar! Reading them makes you feel wise and giggly! 📚✨",
+    text: "📜 The glowing pictures show the story of the forest! They tell about magical creatures, friendly villages, and hidden treasures. One picture shows a bunny wearing a tiny crown! Another shows a fish playing a guitar! At the end of the cave, you see a wise old turtle with a glowing memory stone! 📚✨",
     choices: [
       { text: "🔦 Now go find the treasure", nextSceneId: "treasure_puzzle" },
+      { text: "🧩 Visit the pattern stone turtle", nextSceneId: "pattern_puzzle" },
       { text: "🏃‍♂️ Go back outside", nextSceneId: "intro" },
     ],
   },
@@ -280,9 +281,10 @@ const scenes: Scene[] = [
   },
   {
     id: "dance_party",
-    text: "🎵💃 You join the village music and dancing! Everyone is so happy to have you join their celebration! One person is dancing with two left feet but having the most fun ever! The music makes your heart feel light and joyful! ✨",
+    text: "🎵💃 You join the village music and dancing! Everyone is so happy to have you join their celebration! You hear animals nearby having their own sound contest! One person is dancing with two left feet but having the most fun ever! The music makes your heart feel light and joyful! ✨",
     choices: [
       { text: "🎶 Learn to make music with them", nextSceneId: "music_maker" },
+      { text: "🎵 Join the animal sounds", nextSceneId: "animal_sounds_puzzle" },
       { text: "💃 Teach them new dance moves", nextSceneId: "dance_teacher" },
       {
         text: "😊 Help shy people join the fun",
@@ -292,18 +294,20 @@ const scenes: Scene[] = [
   },
   {
     id: "star_watching",
-    text: "⭐🌙 You look up at the sparkling night sky! The stars are so bright and beautiful! You notice they seem to make patterns and tell stories about adventures! One star seems to be winking at you like it's telling a joke! ✨",
+    text: "⭐🌙 You look up at the sparkling night sky! The stars are so bright and beautiful! You notice they seem to make patterns and tell stories about adventures! You hear a wise owl hooting nearby with a riddle challenge! One star seems to be winking at you like it's telling a joke! ✨",
     choices: [
       { text: "🧭 Learn to navigate by the stars", nextSceneId: "star_guide" },
+      { text: "🦉 Visit the wise owl", nextSceneId: "riddle_puzzle" },
       { text: "☁️ Watch the clouds drift by", nextSceneId: "cloud_watcher" },
       { text: "🔍 Help others find their way", nextSceneId: "helper_finder" },
     ],
   },
   {
     id: "garden_discovery",
-    text: "🌸✨ You discover that these magical flowers can grow anywhere! You learn their secrets and how to help other plants grow strong and beautiful too! One flower even grows upside down and says 'Look at me, I'm doing a headstand!' 🌻🌿",
+    text: "🌸✨ You discover that these magical flowers can grow anywhere! You learn their secrets and how to help other plants grow strong and beautiful too! You hear happy bunny voices nearby having a counting party! One flower even grows upside down and says 'Look at me, I'm doing a headstand!' 🌻🌿",
     choices: [
       { text: "🌱 Become a master gardener", nextSceneId: "magic_gardener" },
+      { text: "🐰 Join the bunny party", nextSceneId: "counting_puzzle" },
       {
         text: "🔍 Help others find these flowers",
         nextSceneId: "helper_finder",
@@ -373,6 +377,98 @@ const scenes: Scene[] = [
     id: "star_guide",
     text: "<div class='text-amber-300'>⭐🧭 You become a Star Guide! You learn to read the stars and help travelers find their way at night. Your knowledge of the sky helps everyone feel safe when it gets dark, and you love sharing stories about constellations! Your favorite constellation looks like a dancing pizza! 🌙✨</div>",
     choices: [{ text: "🏠 Main Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "pattern_puzzle",
+    text: "🧩 You find a magical pattern stone that glows with different shapes! A wise old turtle 🐢 with tiny spectacles says: 'Watch carefully, young one!' The stone shows: ⭐🌙⭐🌙 then pauses... 'What comes next in the pattern?' the turtle asks kindly. 🤔✨",
+    choices: [
+      { text: "⭐ Star", nextSceneId: "pattern_solved" },
+      { text: "🌙 Moon", nextSceneId: "pattern_wrong" },
+      { text: "🌟 Shooting Star", nextSceneId: "pattern_wrong" },
+      { text: "🤔 Ask to see it again", nextSceneId: "pattern_puzzle" },
+    ],
+  },
+  {
+    id: "pattern_solved",
+    text: "<div class='text-amber-300'>🎉 'Perfect!' says the turtle with a big smile! 'You understand patterns so well!' The stone glows brighter and gives you the power to see hidden patterns in nature! A small hedgehog pops up and claps his tiny paws! 🧩✨</div>",
+    choices: [{ text: "🏠 Main Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "pattern_wrong",
+    text: "🐢 The wise turtle smiles kindly: 'Not quite right, but that's okay! Pattern recognition takes practice. The pattern was star, moon, star, moon... so what comes next? Think about the repeating pattern!' A friendly mouse whispers 'You've got this!' 🌟",
+    choices: [
+      { text: "🔄 Try the pattern again", nextSceneId: "pattern_puzzle" },
+      { text: "🏃‍♂️ Come back later", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "riddle_puzzle",
+    text: "🦉 A clever owl wearing a tiny hat sits on a mushroom! 'I have a riddle for you!' he hoots excitedly. 'I'm tall when I'm young, and short when I'm old. I give light in the dark, but I'm not the sun! What am I?' A cricket chirps 'This is a good one!' 🕯️🤔",
+    choices: [
+      { text: "🕯️ A candle", nextSceneId: "riddle_solved" },
+      { text: "🌳 A tree", nextSceneId: "riddle_wrong" },
+      { text: "⭐ A star", nextSceneId: "riddle_wrong" },
+      { text: "🤔 Think more", nextSceneId: "riddle_puzzle" },
+    ],
+  },
+  {
+    id: "riddle_solved",
+    text: "<div class='text-amber-300'>🎉 'Excellent!' hoots the owl, doing a little wing dance! 'A candle indeed! Tall when new, short when burned, gives light but isn't the sun!' You feel much wiser! The cricket applauds by rubbing his legs together! 🧠🕯️</div>",
+    choices: [{ text: "🏠 Main Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "riddle_wrong",
+    text: "🦉 The owl tilts his head thoughtfully: 'Good guess, but not quite! Think about something that gets shorter as it's used, and gives light when it's dark. The cricket whispers 'It rhymes with handle!' Try again! 🤗",
+    choices: [
+      { text: "🔄 Try again", nextSceneId: "riddle_puzzle" },
+      { text: "🏃‍♂️ Come back later", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "counting_puzzle",
+    text: "🐰 You meet a family of counting bunnies! Papa Bunny says: 'We're having a carrot party! 🥕 I have 3 carrots, Mama has 5 carrots, and our 4 baby bunnies each have 2 carrots. How many carrots do we have for our party?' Baby Bunny giggles 'I love math parties!' 🎉",
+    choices: [
+      { text: "🔢 Answer: 16 carrots", nextSceneId: "counting_solved" },
+      { text: "🔢 Answer: 14 carrots", nextSceneId: "counting_wrong" },
+      { text: "🔢 Answer: 12 carrots", nextSceneId: "counting_wrong" },
+      { text: "🤔 Count again carefully", nextSceneId: "counting_puzzle" },
+    ],
+  },
+  {
+    id: "counting_solved",
+    text: "<div class='text-amber-300'>🎉 'Hooray!' cheer all the bunnies! 'You got it right! 3 + 5 + (4 × 2) = 16 carrots!' They share their yummy carrots with you at the best bunny party ever! Baby Bunny does a happy hop dance! 🥕🐰</div>",
+    choices: [{ text: "🏠 Main Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "counting_wrong",
+    text: "🐰 Papa Bunny smiles sweetly: 'Almost! Let me help you count: I have 3, Mama has 5, and each of our 4 babies has 2 carrots. So that's 3 + 5 + 2 + 2 + 2 + 2. Try adding them up!' Mama Bunny nods encouragingly! 🥕",
+    choices: [
+      { text: "🔄 Try again", nextSceneId: "counting_puzzle" },
+      { text: "🏃‍♂️ Come back later", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "animal_sounds_puzzle",
+    text: "🎵 You find a musical clearing where animals are having a sound contest! A fox 🦊 says: 'We each make a sound! Listen carefully: I say YIP! The cow says MOO! The duck says QUACK! What sound does the sheep make?' A little lamb giggles behind a tree! 🐑",
+    choices: [
+      { text: "🐑 BAA!", nextSceneId: "sounds_solved" },
+      { text: "🐄 MOO!", nextSceneId: "sounds_wrong" },
+      { text: "🐦 CHIRP!", nextSceneId: "sounds_wrong" },
+      { text: "🤔 Listen again", nextSceneId: "animal_sounds_puzzle" },
+    ],
+  },
+  {
+    id: "sounds_solved",
+    text: "<div class='text-amber-300'>🎉 'BAA! BAA!' bleats the happy little sheep as she jumps out! 'You know our sounds so well!' All the animals cheer and have a wonderful concert together! The fox yips, the cow moos, the duck quacks, and the sheep baas in perfect harmony! 🎵🐑</div>",
+    choices: [{ text: "🏠 Main Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "sounds_wrong",
+    text: "🦊 The fox giggles: 'That's a good sound, but not quite right! The sheep is fluffy and white and says... well, what do you think she says? Listen to the wind - sometimes it sounds like sheep!' The little lamb giggles again! 🐑💨",
+    choices: [
+      { text: "🔄 Try again", nextSceneId: "animal_sounds_puzzle" },
+      { text: "🏃‍♂️ Come back later", nextSceneId: "intro" },
+    ],
   },
 ];
 

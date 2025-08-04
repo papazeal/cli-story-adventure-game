@@ -122,7 +122,7 @@
 <div class="h-screen flex flex-col bg-gray-900 text-white">
   <!-- Terminal Content -->
   <div
-    class="flex-1 p-6 overflow-y-auto font-mono text-lg bg-slate-800 pb-60"
+    class="flex-1 p-6 overflow-y-auto font-mono text-lg bg-slate-800 pb-30"
     bind:this={terminalElement}
   >
     {#each terminalLines as line (line.id)}

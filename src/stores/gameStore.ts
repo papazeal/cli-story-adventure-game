@@ -74,7 +74,7 @@ function get<T>(store: {
 const scenes: Scene[] = [
   {
     id: "welcome",
-    text: "✨ Story Adventure Game",
+    text: "🌲 Forest Friends 🌲",
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
       { text: "❓ How to Play", nextSceneId: "help" },
@@ -99,7 +99,7 @@ const scenes: Scene[] = [
   },
   {
     id: "intro",
-    text: "🌲 You wake up in a magic forest! The trees shine with water drops ✨ and birds sing happy songs 🎵. A squirrel waves at you and says 'Good morning!' in a tiny squeaky voice! 😊",
+    text: "🌲 You wake up in a magic forest! The trees shine with water drops ✨ and birds sing happy songs 🎵. You hear the gentle sound of flowing water nearby 💧. A squirrel waves at you and says 'Good morning!' in a tiny squeaky voice! 😊",
     choices: [
       { text: "🏞️ Go to the water sounds", nextSceneId: "river" },
       { text: "🌳 Climb a big tree", nextSceneId: "tree" },
@@ -108,16 +108,16 @@ const scenes: Scene[] = [
   },
   {
     id: "river",
-    text: "💧 You find a small river with clean water! 🌊 In the mud you see footprints - some from people and some from a big nice animal. A fish pops its head up and says 'Blub blub, welcome to my neighborhood!' then splashes back down! 🐾✨",
+    text: "💧 You find a small river with clean water! 🌊 In the mud you see footprints - some from people 👣 and some from a big animal 🐾.",
     choices: [
-      { text: "👤 Follow the people footprints", nextSceneId: "village" },
-      { text: "🔍 Follow the big animal tracks", nextSceneId: "creature" },
+      { text: "👣 Follow the people footprints", nextSceneId: "village" },
+      { text: "🐾 Follow the big animal tracks", nextSceneId: "creature" },
       { text: "🚰 Get some water and go back", nextSceneId: "intro" },
     ],
   },
   {
     id: "tree",
-    text: "🌳 You climb up a big tree to the top! You can see far! ✨ You see a small town with smoke 🏘️💨 and a cave with pretty lights! A bird lands next to you and says 'Nice climbing! I've been watching - you're almost as good as me!' 🕳️⭐",
+    text: "🌳 You climb up a big tree to the top! You can see far! ✨ You see a small village with smoke 🏘️💨 and a cave with pretty lights! A bird lands next to you and says 'Nice climbing! I've been watching - you're almost as good as me!' 🕳️⭐",
     choices: [
       { text: "🏘️ Go to the village", nextSceneId: "village" },
       { text: "🕳️ Check out the cave", nextSceneId: "cave" },
@@ -126,7 +126,7 @@ const scenes: Scene[] = [
   },
   {
     id: "backpack",
-    text: "🎒 You look in your bag and find good things! A shiny compass 🧭, yummy snacks 🍫, a bright light 🔦, and a magic map that wiggles and says 'Pick me! Pick me!' in a tiny paper voice! 🗺️✨",
+    text: "🎒 You look in your bag and find good things! A shiny compass 🧭, yummy snacks 🍫, a bright light 🔦, and a magic map that wiggles and says 'Pick me! Pick me!' in a tiny paper voice! You're feeling a bit tired from your forest adventure. 🗺️✨",
     choices: [
       { text: "🧭 Use the compass", nextSceneId: "village" },
       { text: "🔮 Look at the magic map", nextSceneId: "portal" },
@@ -135,7 +135,7 @@ const scenes: Scene[] = [
   },
   {
     id: "village",
-    text: "🏘️ You find a happy little town! People play music and dance! 🎵💃 A nice grandma 👵 says hello with a big smile. Kids play fun games! One kid is trying to juggle three cookies but keeps eating them instead! 🎈",
+    text: "🏘️ You find a happy little village! People play music and dance! 🎵💃 A nice grandma 👵 says hello with a big smile. Kids play fun word games with a wise owl teacher! One kid is trying to juggle three cookies but keeps eating them instead! 🎈",
     choices: [
       { text: "🏠 Go with the nice grandma", nextSceneId: "helper" },
       { text: "🎈 Play with the village kids", nextSceneId: "rhyme_puzzle" },

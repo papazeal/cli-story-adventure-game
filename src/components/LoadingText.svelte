@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   export let text: string;
-  export let delay: number = 1000; // 1 second delay
+  export let delay: number = 500; // 1 second delay
   export let onComplete: (() => void) | undefined = undefined;
   export let isActiveLoading: boolean = false;
 

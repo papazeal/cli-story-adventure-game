@@ -93,7 +93,12 @@
       const selectedChoice = currentChoices[choiceIndex];
 
       // Check if this choice leads to a correct answer and play appropriate sound
-      const rewardScenes = ["owl_reward", "cat_reward", "frog_reward", "crab_reward"];
+      const rewardScenes = [
+        "owl_reward",
+        "cat_reward",
+        "frog_reward",
+        "crab_reward",
+      ];
 
       const correctScenes = [
         "owl_quiz_1_correct",
@@ -199,7 +204,7 @@
         ITEMS.forEach((item) => {
           const isOwned = owned.includes(item.id);
           const opacity = isOwned ? "opacity-100" : "opacity-40";
-          itemsDisplay += `<div class="${opacity}">${item.name} - ${item.description}</div>`;
+          itemsDisplay += `<div class="${opacity}">${item.name}</div>`;
         });
 
         addLine("output", itemsDisplay, undefined, true);

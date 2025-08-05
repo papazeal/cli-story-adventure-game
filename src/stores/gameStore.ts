@@ -118,7 +118,7 @@ const scenes: Scene[] = [
   },
   {
     id: "owl_intro",
-    text: "🦉 Hello! I'm Oliver the Owl! 🎩 I'm excited to teach you 3 amazing facts about owls like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🦉 Hi! I'm Oliver the Owl! 🎩 Let's learn some cool owl facts together! ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "owl_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
@@ -216,7 +216,7 @@ const scenes: Scene[] = [
   },
   {
     id: "cat_intro",
-    text: "🐱 Hello! I'm Whiskers the Cat! 😸 I'm excited to teach you 3 amazing facts about cats like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🐱 Hi! I'm Whiskers the Cat! 😸 Want to discover some fun cat facts? ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "cat_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
@@ -303,7 +303,7 @@ const scenes: Scene[] = [
   },
   {
     id: "frog_intro",
-    text: "🐸 Hello! I'm Freddy the Frog! 💚 I'm excited to teach you 3 amazing facts about frogs like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🐸 Hi! I'm Freddy the Frog! 💚 Come explore amazing frog facts with me! ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "frog_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
@@ -740,7 +740,7 @@ const scenes: Scene[] = [
   },
   {
     id: "crab_intro",
-    text: "🦀 Hello! I'm Crusty the Crab! 🌊 I'm excited to teach you 3 amazing facts about crabs like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🦀 Hi! I'm Crusty the Crab! 🌊 Ready to find out cool crab facts? ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "crab_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },

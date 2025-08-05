@@ -335,9 +335,17 @@ export class AudioManager {
       // Super cheerful reward completion - ascending triumphant melody
       return [523.25, 659.25, 783.99, 987.77, 1174.66]; // C5 -> E5 -> G5 -> B5 -> D6 (victory fanfare)
     }
-    if (text.includes("🎉 CORRECT!")) {
+    if (text.includes("🎉")) {
       // Regular correct answer - happy but shorter
       return [523.25, 659.25, 783.99]; // C5 -> E5 -> G5 (correct cheer)
+    }
+    if (text.includes("❌")) {
+      // Gentle sad tone for wrong answers - descending but encouraging
+      return [392.0, 329.63, 369.99]; // G4 -> E4 -> F#4 (gentle disappointment, ends on hopeful note)
+    }
+    if (text.includes("💡")) {
+      // Curious/interesting tone for fun facts - playful and intriguing
+      return [440.0, 523.25, 587.33, 659.25]; // A4 -> C5 -> D5 -> E5 (ascending curiosity)
     }
 
     // Default based on emoji emotions

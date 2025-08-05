@@ -24,12 +24,22 @@
     {
       id: "feather_of_wisdom",
       name: "🪶 Feather of Wisdom",
-      description: "Oliver the Owl's Gift",
+      description: "Oliver the Owl",
     },
     {
       id: "golden_whisker",
       name: "✨ Golden Whisker",
-      description: "Whiskers the Cat's Gift",
+      description: "Whiskers the Cat",
+    },
+    {
+      id: "lily_pad_crown",
+      name: "👑 Lily Pad Crown",
+      description: "Freddy the Frog",
+    },
+    {
+      id: "ocean_shell",
+      name: "🐚 Ocean Shell",
+      description: "Crusty the Crab",
     },
   ];
 
@@ -83,23 +93,57 @@
       const selectedChoice = currentChoices[choiceIndex];
 
       // Check if this choice leads to a correct answer and play appropriate sound
-      const quiz4CorrectScenes = ["owl_quiz_4_correct", "cat_quiz_4_correct"];
+      const rewardScenes = ["owl_reward", "cat_reward", "frog_reward", "crab_reward"];
 
-      const otherCorrectScenes = [
+      const correctScenes = [
         "owl_quiz_1_correct",
         "owl_quiz_2_correct",
         "owl_quiz_3_correct",
         "cat_quiz_1_correct",
         "cat_quiz_2_correct",
         "cat_quiz_3_correct",
+        "frog_quiz_1_correct",
+        "frog_quiz_2_correct",
+        "frog_quiz_3_correct",
+        "crab_quiz_1_correct",
+        "crab_quiz_2_correct",
+        "crab_quiz_3_correct",
       ];
 
-      if (quiz4CorrectScenes.includes(selectedChoice.nextSceneId)) {
-        // Super cheerful notes for final quiz completion
+      const wrongScenes = [
+        "owl_quiz_1_wrong",
+        "owl_quiz_2_wrong",
+        "owl_quiz_3_wrong",
+        "cat_quiz_1_wrong",
+        "cat_quiz_2_wrong",
+        "cat_quiz_3_wrong",
+        "frog_quiz_1_wrong",
+        "frog_quiz_2_wrong",
+        "frog_quiz_3_wrong",
+        "crab_quiz_1_wrong",
+        "crab_quiz_2_wrong",
+        "crab_quiz_3_wrong",
+      ];
+
+      const funFactScenes = [
+        "owl_fun_fact_1",
+        "cat_fun_fact_1",
+        "frog_fun_fact_1",
+        "crab_fun_fact_1",
+      ];
+
+      if (rewardScenes.includes(selectedChoice.nextSceneId)) {
+        // Super cheerful notes for reward scenes
         audioManager.playChoiceTone("🎊 AMAZING! ALL DONE! 🎊");
-      } else if (otherCorrectScenes.includes(selectedChoice.nextSceneId)) {
-        // Regular cheer for quiz 1-3 correct answers
+      } else if (correctScenes.includes(selectedChoice.nextSceneId)) {
+        // Regular cheer for all quiz correct answers
         audioManager.playChoiceTone("🎉 CORRECT!");
+      } else if (wrongScenes.includes(selectedChoice.nextSceneId)) {
+        // Gentle sad tone for wrong answers
+        audioManager.playChoiceTone("❌ WRONG");
+      } else if (funFactScenes.includes(selectedChoice.nextSceneId)) {
+        // Curious/interesting tone for fun facts
+        audioManager.playChoiceTone("💡 FUN FACT");
       } else {
         // Play simple note for all other choices
         audioManager.playChoiceTone("♪");
@@ -138,6 +182,10 @@
         saveItem("feather_of_wisdom");
       } else if (scene.id === "cat_reward") {
         saveItem("golden_whisker");
+      } else if (scene.id === "frog_reward") {
+        saveItem("lily_pad_crown");
+      } else if (scene.id === "crab_reward") {
+        saveItem("ocean_shell");
       }
 
       addLine("output", "");
@@ -146,16 +194,14 @@
       // Special handling for items scene
       if (scene.id === "items") {
         const owned = getOwnedItems();
-        let itemsDisplay = scene.text + "\n\n";
+        let itemsDisplay = "";
 
         ITEMS.forEach((item) => {
           const isOwned = owned.includes(item.id);
-          const opacity = isOwned ? "opacity-100" : "opacity-50";
+          const opacity = isOwned ? "opacity-100" : "opacity-40";
           itemsDisplay += `<div class="${opacity}">${item.name} - ${item.description}</div>`;
         });
 
-        itemsDisplay +=
-          "\nComplete puzzles with your forest friends to earn their special gifts!";
         addLine("output", itemsDisplay, undefined, true);
       } else {
         addLine("output", scene.text, undefined, true); // Mark as story text
@@ -173,13 +219,12 @@
 
         let choicesToShow = scene.choices;
         if (isQuizQuestion) {
-          // Shuffle choices for quiz questions, but keep hint/navigation choices at the end
+          // Shuffle choices for quiz questions, but keep navigation choices at the end
           const quizChoices = scene.choices.filter(
-            (choice) =>
-              !choice.text.includes("🤔") && !choice.text.includes("🔙")
+            (choice) => !choice.text.includes("🔙")
           );
-          const nonQuizChoices = scene.choices.filter(
-            (choice) => choice.text.includes("🤔") || choice.text.includes("🔙")
+          const nonQuizChoices = scene.choices.filter((choice) =>
+            choice.text.includes("🔙")
           );
 
           choicesToShow = [...shuffleArray(quizChoices), ...nonQuizChoices];

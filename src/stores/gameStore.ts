@@ -84,14 +84,14 @@ const scenes: Scene[] = [
     text: "🌲 Forest Friends 🌲",
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
-      { text: "🎁 Friendship Collection", nextSceneId: "items" },
+      { text: "🎁 Gift Collection", nextSceneId: "items" },
       { text: "❓ How to Play", nextSceneId: "help" },
       // { text: "📝 What's New", nextSceneId: "changelog" },
     ],
   },
   {
     id: "help",
-    text: "📖 How to Play:\n\n• 🦉 Choose an animal to learn about\n• 📚 Complete 4 fun fact quizzes\n• 🎁 Earn a special gift from your animal friend\n• 🔄 More animals coming soon!",
+    text: "📖 How to Play:\n\n• 🦉 Choose an animal to learn about\n• 📚 Complete 3 fun fact quizzes\n• 🎁 Earn a special gift from your animal friend\n• 🔄 More animals coming soon!",
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
       { text: "🔙 Back to Menu", nextSceneId: "welcome" },
@@ -107,16 +107,18 @@ const scenes: Scene[] = [
   },
   {
     id: "intro",
-    text: "🌲 Welcome to Forest Friends! 🌲\n\nChoose an animal to learn about! Complete 4 quizzes to earn their special gift! 🎁✨",
+    text: "Choose an animal to learn about!✨",
     choices: [
       { text: "🦉 Oliver the Owl", nextSceneId: "owl_intro" },
       { text: "🐱 Whiskers the Cat", nextSceneId: "cat_intro" },
+      { text: "🐸 Freddy the Frog", nextSceneId: "frog_intro" },
+      { text: "🦀 Crusty the Crab", nextSceneId: "crab_intro" },
       { text: "🔙 Back to Menu", nextSceneId: "welcome" },
     ],
   },
   {
     id: "owl_intro",
-    text: "🦉 Hello! I'm Oliver the Owl! 🎩 I'm excited to teach you 4 amazing facts about owls like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🦉 Hello! I'm Oliver the Owl! 🎩 I'm excited to teach you 3 amazing facts about owls like me! Ready to learn? Let's start with Quiz 1! ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "owl_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
@@ -129,98 +131,84 @@ const scenes: Scene[] = [
       { text: "👁️ Seeing in the dark", nextSceneId: "owl_quiz_1_correct" },
       { text: "🏊‍♂️ Swimming underwater", nextSceneId: "owl_quiz_1_wrong" },
       { text: "🏃‍♂️ Running very fast", nextSceneId: "owl_quiz_1_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "owl_quiz_1" },
     ],
   },
   {
     id: "owl_quiz_1_correct",
-    text: "🎉 'Excellent!' hoots Oliver happily! 'We owls have amazing night vision! Our big eyes help us see in the dark much better than most animals!' ✨ Quiz 1 Complete! Ready for Quiz 2? 📚",
-    choices: [
-      { text: "📚 Continue to Quiz 2", nextSceneId: "owl_quiz_2" },
-    ],
+    text: "🎉 'Excellent!' hoots Oliver happily! 'We owls have amazing night vision! Our big eyes help us see in the dark much better than most animals!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 2", nextSceneId: "owl_quiz_2" }],
   },
   {
     id: "owl_quiz_1_wrong",
     text: "🦉 Oliver tilts his head thoughtfully: 'Good guess, but not quite! Think about when it gets dark at night - what can owls do that many other animals can't? We hunt at night when it's hard to see!' 🌙",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "owl_quiz_1" },
-    ],
+    choices: [{ text: "🔄 Try again", nextSceneId: "owl_quiz_1" }],
   },
   {
     id: "owl_quiz_2",
     text: "🦉 Quiz 2: Oliver fluffs his feathers proudly and asks: 'Our heads are very special! We can turn our heads much farther than humans can. How far can we owls turn our heads?' 🔄",
     choices: [
-      { text: "🔄 270 degrees (almost all the way around)", nextSceneId: "owl_quiz_2_correct" },
-      { text: "🔄 90 degrees (just to the side)", nextSceneId: "owl_quiz_2_wrong" },
-      { text: "🔄 180 degrees (halfway around)", nextSceneId: "owl_quiz_2_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "owl_quiz_2" },
+      {
+        text: "🔄 270 degrees (almost all the way around)",
+        nextSceneId: "owl_quiz_2_correct",
+      },
+      {
+        text: "🔄 90 degrees (just to the side)",
+        nextSceneId: "owl_quiz_2_wrong",
+      },
+      {
+        text: "🔄 180 degrees (halfway around)",
+        nextSceneId: "owl_quiz_2_wrong",
+      },
     ],
   },
   {
     id: "owl_quiz_2_correct",
-    text: "🎉 'Amazing!' Oliver spins his head almost all the way around to demonstrate! 'We can turn our heads 270 degrees! That's because we have 14 neck bones - humans only have 7!' ✨ Quiz 2 Complete! Ready for Quiz 3? 📚",
+    text: "🎉 'Amazing!' Oliver spins his head almost all the way around to demonstrate! 'We can turn our heads 270 degrees! That's because we have 14 neck bones - humans only have 7!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 3", nextSceneId: "owl_fun_fact_1" }],
+  },
+  {
+    id: "owl_fun_fact_1",
+    text: "💡 **Did you know?** 🦉\n\nOwls can't move their eyes! That's why we turn our heads so much. Our eyes are fixed in place like tubes, so we have to move our whole head to look around! Pretty cool, right? 👀✨",
     choices: [
-      { text: "📚 Continue to Quiz 3", nextSceneId: "owl_quiz_3" },
+      { text: "🤔 That's amazing! Continue", nextSceneId: "owl_quiz_3" },
     ],
   },
   {
     id: "owl_quiz_2_wrong",
     text: "🦉 Oliver slowly turns his head very far to show you: 'More than that! We can turn our heads much, much farther than humans. It's almost like we can see behind us!' 👀",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "owl_quiz_2" },
-    ],
+    choices: [{ text: "🔄 Try again", nextSceneId: "owl_quiz_2" }],
   },
   {
     id: "owl_quiz_3",
-    text: "🦉 Quiz 3: Oliver spreads his wings wide and asks: 'When we fly, we're very special compared to other birds! Most birds make noise when they fly, but we owls are different. What makes our flight special?' 🪶✈️",
+    text: "🦉 Quiz 3 (Final): Oliver points to his ear with his wing: 'Our hearing is incredibly powerful! We don't just have good ears - we have something very special about them. What makes owl ears so amazing?' 👂🎯",
     choices: [
-      { text: "🤫 We fly completely silently", nextSceneId: "owl_quiz_3_correct" },
-      { text: "🌪️ We fly faster than any other bird", nextSceneId: "owl_quiz_3_wrong" },
-      { text: "⬆️ We fly higher than other birds", nextSceneId: "owl_quiz_3_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "owl_quiz_3" },
+      {
+        text: "👂 Our ears are at different heights",
+        nextSceneId: "owl_quiz_3_correct",
+      },
+      {
+        text: "👂 Our ears are much bigger than other birds",
+        nextSceneId: "owl_quiz_3_wrong",
+      },
+      {
+        text: "👂 We have four ears instead of two",
+        nextSceneId: "owl_quiz_3_wrong",
+      },
     ],
   },
   {
     id: "owl_quiz_3_correct",
-    text: "🎉 'Perfect!' Oliver flaps his wings without making any sound! 'Our feathers have special soft edges that make us silent hunters! Our prey never hears us coming!' ✨ Quiz 3 Complete! Ready for the final Quiz 4? 📚",
-    choices: [
-      { text: "📚 Continue to Quiz 4", nextSceneId: "owl_quiz_4" },
-    ],
+    text: "🎉 'Outstanding!' Oliver tilts his head to show you: 'Our ears are at different heights on our heads! This helps us pinpoint exactly where sounds come from - even tiny mouse footsteps!' 🎯✨",
+    choices: [{ text: "🎁 Receive Oliver's Gift", nextSceneId: "owl_reward" }],
   },
   {
     id: "owl_quiz_3_wrong",
-    text: "🦉 Oliver flaps his wings and you notice there's no sound at all: 'Listen carefully... do you hear anything when I flap my wings? That's our special ability!' 🤫",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "owl_quiz_3" },
-    ],
-  },
-  {
-    id: "owl_quiz_4",
-    text: "🦉 Quiz 4 (Final): Oliver points to his ear with his wing: 'Our hearing is incredibly powerful! We don't just have good ears - we have something very special about them. What makes owl ears so amazing?' 👂🎯",
-    choices: [
-      { text: "👂 Our ears are at different heights", nextSceneId: "owl_quiz_4_correct" },
-      { text: "👂 Our ears are much bigger than other birds", nextSceneId: "owl_quiz_4_wrong" },
-      { text: "👂 We have four ears instead of two", nextSceneId: "owl_quiz_4_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "owl_quiz_4" },
-    ],
-  },
-  {
-    id: "owl_quiz_4_correct",
-    text: "🎉 'Outstanding!' Oliver tilts his head to show you: 'Our ears are at different heights on our heads! This helps us pinpoint exactly where sounds come from - even tiny mouse footsteps!' 🎯✨ All 4 Quizzes Complete! Time for your special gift! 🎁",
-    choices: [
-      { text: "🎁 Receive Oliver's Gift", nextSceneId: "owl_reward" },
-    ],
-  },
-  {
-    id: "owl_quiz_4_wrong",
     text: "🦉 Oliver turns his head to show you his ear area: 'Close! It's about the position of our ears. Think about how this might help us locate sounds more precisely!' 🎯",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "owl_quiz_4" },
-    ],
+    choices: [{ text: "🔄 Try again", nextSceneId: "owl_quiz_3" }],
   },
   {
     id: "owl_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' hoots Oliver proudly! 'You've learned so much about owls! As a reward for completing all 4 quizzes, I'm giving you my special Feather of Wisdom!' 🪶✨ Oliver tells you: 'This feather will remind you of all the amazing things you learned about owls today!' He gives you a beautiful owl feather that glows softly. 🦉💫\n\n*You received: 🪶 Feather of Wisdom!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' hoots Oliver proudly! 'You've learned so much about owls! As a reward for completing all 3 quizzes, I'm giving you my special Feather of Wisdom!' 🪶✨ Oliver tells you: 'This feather will remind you of all the amazing things you learned about owls today!' He gives you a beautiful owl feather that glows softly. 🦉💫\n\n*You received: 🪶 Feather of Wisdom!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
@@ -228,7 +216,7 @@ const scenes: Scene[] = [
   },
   {
     id: "cat_intro",
-    text: "🐱 Hello! I'm Whiskers the Cat! 😸 I'm excited to teach you 4 amazing facts about cats like me! Ready to learn? Let's start with Quiz 1! ✨",
+    text: "🐱 Hello! I'm Whiskers the Cat! 😸 I'm excited to teach you 3 amazing facts about cats like me! Ready to learn? Let's start with Quiz 1! ✨",
     choices: [
       { text: "📚 Start Quiz 1", nextSceneId: "cat_quiz_1" },
       { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
@@ -241,98 +229,158 @@ const scenes: Scene[] = [
       { text: "🐾 Our long tails", nextSceneId: "cat_quiz_1_correct" },
       { text: "👂 Our big ears", nextSceneId: "cat_quiz_1_wrong" },
       { text: "🦵 Our strong legs", nextSceneId: "cat_quiz_1_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "cat_quiz_1" },
     ],
   },
   {
     id: "cat_quiz_1_correct",
-    text: "🎉 'Perfect!' purrs Whiskers, swishing his tail! 'Our tails help us balance like a tightrope walker's pole! We move our tails to stay steady when we walk on fences or climb trees!' ✨ Quiz 1 Complete! Ready for Quiz 2? 📚",
-    choices: [
-      { text: "📚 Continue to Quiz 2", nextSceneId: "cat_quiz_2" },
-    ],
+    text: "🎉 'Perfect!' purrs Whiskers, swishing his tail! 'Our tails help us balance like a tightrope walker's pole! We move our tails to stay steady when we walk on fences or climb trees!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 2", nextSceneId: "cat_quiz_2" }],
   },
   {
     id: "cat_quiz_1_wrong",
     text: "🐱 Whiskers swishes his tail back and forth: 'Good guess! But look at what I'm moving right now to help me balance. It's long and fluffy and helps me stay steady!' 🐾",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "cat_quiz_1" },
-    ],
+    choices: [{ text: "🔄 Try again", nextSceneId: "cat_quiz_1" }],
   },
   {
     id: "cat_quiz_2",
-    text: "🐱 Quiz 2: Whiskers stretches and shows his paws: 'We cats are amazing hunters! We can sneak up on mice without making any sound. What do we have on our paws that helps us walk silently?' 🤫🐾",
+    text: "🐱 Quiz 2: Whiskers' eyes get big and round: 'We cats can see much better than humans in low light! Our eyes have something special that helps us see in the dark. What makes our eyes so good at night vision?' 👁️🌙",
     choices: [
-      { text: "🧸 Soft paw pads", nextSceneId: "cat_quiz_2_correct" },
-      { text: "🧤 Furry mittens", nextSceneId: "cat_quiz_2_wrong" },
-      { text: "👟 Tiny shoes", nextSceneId: "cat_quiz_2_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "cat_quiz_2" },
+      { text: "👁️ Our pupils get very big", nextSceneId: "cat_quiz_2_correct" },
+      { text: "👁️ Our eyes glow in the dark", nextSceneId: "cat_quiz_2_wrong" },
+      { text: "👁️ We have extra eyelids", nextSceneId: "cat_quiz_2_wrong" },
     ],
   },
   {
     id: "cat_quiz_2_correct",
-    text: "🎉 'Excellent!' Whiskers shows you his soft paw pads! 'These squishy pads cushion our steps so we can sneak up on prey silently! They're like built-in slippers!' ✨ Quiz 2 Complete! Ready for Quiz 3? 📚",
-    choices: [
-      { text: "📚 Continue to Quiz 3", nextSceneId: "cat_quiz_3" },
-    ],
+    text: "🎉 'Amazing!' Whiskers' pupils get huge and round! 'Our pupils can open very wide to let in more light! This helps us see when it's almost dark!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 3", nextSceneId: "cat_fun_fact_1" }],
+  },
+  {
+    id: "cat_fun_fact_1",
+    text: "💡 **Did you know?** 🐱\n\nCats spend 70% of their lives sleeping! That's 13-16 hours a day! When we're not sleeping, we spend 30% of our time grooming ourselves to stay clean and smell-free for hunting! 😴✨",
+    choices: [{ text: "🤔 So sleepy! Continue", nextSceneId: "cat_quiz_3" }],
   },
   {
     id: "cat_quiz_2_wrong",
-    text: "🐱 Whiskers lifts his paw to show you: 'Look at the bottom of my paws! Feel how soft and squishy they are. These help me walk without making noise!' 🤫",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "cat_quiz_2" },
-    ],
+    text: "🐱 Whiskers looks at you with his big round eyes: 'Look at my eyes in the dim light - see how the black center gets bigger and smaller? That's the secret!' 👁️",
+    choices: [{ text: "🔄 Try again", nextSceneId: "cat_quiz_2" }],
   },
   {
     id: "cat_quiz_3",
-    text: "🐱 Quiz 3: Whiskers' eyes get big and round: 'We cats can see much better than humans in low light! Our eyes have something special that helps us see in the dark. What makes our eyes so good at night vision?' 👁️🌙",
+    text: "🐱 Quiz 3 (Final): Whiskers starts purring loudly: 'We cats make this happy sound when we're content! But purring isn't just for showing happiness - it has a special benefit for our bodies too. What else does purring do for us?' 💚😸",
     choices: [
-      { text: "👁️ Our pupils get very big", nextSceneId: "cat_quiz_3_correct" },
-      { text: "👁️ Our eyes glow in the dark", nextSceneId: "cat_quiz_3_wrong" },
-      { text: "👁️ We have extra eyelids", nextSceneId: "cat_quiz_3_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "cat_quiz_3" },
+      {
+        text: "💊 It helps heal our bones and muscles",
+        nextSceneId: "cat_quiz_3_correct",
+      },
+      {
+        text: "🍽️ It helps us digest our food",
+        nextSceneId: "cat_quiz_3_wrong",
+      },
+      {
+        text: "💤 It helps us fall asleep faster",
+        nextSceneId: "cat_quiz_3_wrong",
+      },
     ],
   },
   {
     id: "cat_quiz_3_correct",
-    text: "🎉 'Amazing!' Whiskers' pupils get huge and round! 'Our pupils can open very wide to let in more light! This helps us see when it's almost dark!' ✨ Quiz 3 Complete! Ready for the final Quiz 4? 📚",
-    choices: [
-      { text: "📚 Continue to Quiz 4", nextSceneId: "cat_quiz_4" },
-    ],
+    text: "🎉 'Outstanding!' Whiskers purrs even louder! 'The vibrations from purring actually help heal our bones and muscles! It's like having our own built-in medicine!' 💚✨",
+    choices: [{ text: "🎁 Receive Whiskers' Gift", nextSceneId: "cat_reward" }],
   },
   {
     id: "cat_quiz_3_wrong",
-    text: "🐱 Whiskers looks at you with his big round eyes: 'Look at my eyes in the dim light - see how the black center gets bigger and smaller? That's the secret!' 👁️",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "cat_quiz_3" },
-    ],
-  },
-  {
-    id: "cat_quiz_4",
-    text: "🐱 Quiz 4 (Final): Whiskers starts purring loudly: 'We cats make this happy sound when we're content! But purring isn't just for showing happiness - it has a special benefit for our bodies too. What else does purring do for us?' 💚😸",
-    choices: [
-      { text: "💊 It helps heal our bones and muscles", nextSceneId: "cat_quiz_4_correct" },
-      { text: "🍽️ It helps us digest our food", nextSceneId: "cat_quiz_4_wrong" },
-      { text: "💤 It helps us fall asleep faster", nextSceneId: "cat_quiz_4_wrong" },
-      { text: "🤔 Give me a hint", nextSceneId: "cat_quiz_4" },
-    ],
-  },
-  {
-    id: "cat_quiz_4_correct",
-    text: "🎉 'Outstanding!' Whiskers purrs even louder! 'The vibrations from purring actually help heal our bones and muscles! It's like having our own built-in medicine!' 💚✨ All 4 Quizzes Complete! Time for your special gift! 🎁",
-    choices: [
-      { text: "🎁 Receive Whiskers' Gift", nextSceneId: "cat_reward" },
-    ],
-  },
-  {
-    id: "cat_quiz_4_wrong",
     text: "🐱 Whiskers purrs and you can feel the vibrations: 'Feel how my whole body vibrates when I purr? These vibrations are actually good for my body in a healing way!' 💚",
-    choices: [
-      { text: "🔄 Try again", nextSceneId: "cat_quiz_4" },
-    ],
+    choices: [{ text: "🔄 Try again", nextSceneId: "cat_quiz_3" }],
   },
   {
     id: "cat_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' purrs Whiskers proudly! 'You've learned so much about cats! As a reward for completing all 4 quizzes, I'm giving you my special Golden Whisker!' 🥇✨ Whiskers tells you: 'This golden whisker will remind you of all the amazing things you learned about cats today!' He gives you one of his magical golden whiskers that shimmers softly. 🐱💫\n\n*You received: ✨ Golden Whisker!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' purrs Whiskers proudly! 'You've learned so much about cats! As a reward for completing all 3 quizzes, I'm giving you my special Golden Whisker!' 🥇✨ Whiskers tells you: 'This golden whisker will remind you of all the amazing things you learned about cats today!' He gives you one of his magical golden whiskers that shimmers softly. 🐱💫\n\n*You received: ✨ Golden Whisker!*</div>",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+      { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "frog_intro",
+    text: "🐸 Hello! I'm Freddy the Frog! 💚 I'm excited to teach you 3 amazing facts about frogs like me! Ready to learn? Let's start with Quiz 1! ✨",
+    choices: [
+      { text: "📚 Start Quiz 1", nextSceneId: "frog_quiz_1" },
+      { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "frog_quiz_1",
+    text: "🐸 Quiz 1: Freddy hops onto a lily pad and asks: 'We frogs are amazing jumpers! We can jump much farther than you might think. How far can a frog jump compared to our body length?' 🦘💚",
+    choices: [
+      {
+        text: "🦘 20 times our body length",
+        nextSceneId: "frog_quiz_1_correct",
+      },
+      { text: "🦘 2 times our body length", nextSceneId: "frog_quiz_1_wrong" },
+      { text: "🦘 5 times our body length", nextSceneId: "frog_quiz_1_wrong" },
+    ],
+  },
+  {
+    id: "frog_quiz_1_correct",
+    text: "🎉 'Fantastic!' croaks Freddy as he does a huge leap! 'We frogs can jump up to 20 times our body length! If you were as good at jumping as me, you could jump across a basketball court in one hop!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 2", nextSceneId: "frog_quiz_2" }],
+  },
+  {
+    id: "frog_quiz_1_wrong",
+    text: "🐸 Freddy does an incredible jump from one side of the pond to the other: 'Much farther than that! Watch me jump - I can go really, really far compared to how small I am!' 🦘",
+    choices: [{ text: "🔄 Try again", nextSceneId: "frog_quiz_1" }],
+  },
+  {
+    id: "frog_quiz_2",
+    text: "🐸 Quiz 2: Freddy dips into the water and asks: 'We frogs can breathe in a very special way that most animals can't! Besides using our lungs, how else can we breathe?' 💨💧",
+    choices: [
+      { text: "🐸 Through our skin", nextSceneId: "frog_quiz_2_correct" },
+      { text: "🐸 Through our eyes", nextSceneId: "frog_quiz_2_wrong" },
+      { text: "🐸 Through our webbed feet", nextSceneId: "frog_quiz_2_wrong" },
+    ],
+  },
+  {
+    id: "frog_quiz_2_correct",
+    text: "🎉 'Amazing!' Freddy splashes happily in the water! 'We can breathe through our skin! This helps us stay underwater longer and is super useful when we hibernate in mud!' ✨",
+    choices: [
+      { text: "📚 Continue to Quiz 3", nextSceneId: "frog_fun_fact_1" },
+    ],
+  },
+  {
+    id: "frog_fun_fact_1",
+    text: "💡 **Did you know?** 🐸\n\nFrogs don't drink water through their mouths! We absorb water through our skin, especially through a special patch on our belly. It's like having a built-in water bottle! 💧✨",
+    choices: [
+      { text: "🤔 Skin drinking! Continue", nextSceneId: "frog_quiz_3" },
+    ],
+  },
+  {
+    id: "frog_quiz_2_wrong",
+    text: "🐸 Freddy sits in the shallow water and you notice he's not coming up for air: 'Think about my skin! It's special and helps me get oxygen even when I'm underwater!' 💧",
+    choices: [{ text: "🔄 Try again", nextSceneId: "frog_quiz_2" }],
+  },
+  {
+    id: "frog_quiz_3",
+    text: "🐸 Quiz 3 (Final): Freddy shows you his tadpole friends and asks: 'We frogs have an amazing life cycle! We start as tadpoles with tails and gills, then change completely. What is this amazing process called?' 🐛➡️🐸",
+    choices: [
+      { text: "🔄 Metamorphosis", nextSceneId: "frog_quiz_3_correct" },
+      { text: "🔄 Evolution", nextSceneId: "frog_quiz_3_wrong" },
+      { text: "🔄 Transformation", nextSceneId: "frog_quiz_3_wrong" },
+    ],
+  },
+  {
+    id: "frog_quiz_3_correct",
+    text: "🎉 'Outstanding!' Freddy does a happy dance! 'Metamorphosis is when we completely change from tadpoles with tails and gills into frogs with legs and lungs! It's like magic!' 🔄✨",
+    choices: [{ text: "🎁 Receive Freddy's Gift", nextSceneId: "frog_reward" }],
+  },
+  {
+    id: "frog_quiz_3_wrong",
+    text: "🐸 Freddy points to a tadpole that's growing legs: 'Close! But there's a special scientific word for when we change completely from tadpoles to frogs!' 🐛➡️🐸",
+    choices: [{ text: "🔄 Try again", nextSceneId: "frog_quiz_3" }],
+  },
+  {
+    id: "frog_reward",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' croaks Freddy proudly! 'You've learned so much about frogs! As a reward for completing all 3 quizzes, I'm giving you my special Lily Pad Crown!' 👑✨ Freddy tells you: 'This lily pad crown will remind you of all the amazing things you learned about frogs today!' He gives you a beautiful crown made of lily pads that glows with pond magic. 🐸💫\n\n*You received: 👑 Lily Pad Crown!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
@@ -687,8 +735,97 @@ const scenes: Scene[] = [
   },
   {
     id: "items",
-    text: "🎁 Friendship Collection",
+    text: "🎁 Gift Collection",
     choices: [{ text: "🔙 Back to Menu", nextSceneId: "welcome" }],
+  },
+  {
+    id: "crab_intro",
+    text: "🦀 Hello! I'm Crusty the Crab! 🌊 I'm excited to teach you 3 amazing facts about crabs like me! Ready to learn? Let's start with Quiz 1! ✨",
+    choices: [
+      { text: "📚 Start Quiz 1", nextSceneId: "crab_quiz_1" },
+      { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "crab_quiz_1",
+    text: "🦀 Quiz 1: Crusty waves his claws and asks: 'We crabs are amazing walkers! We can walk in a special way that most animals can't. How do we crabs usually walk?' 🚶‍♂️🦀",
+    choices: [
+      { text: "⬅️ Sideways", nextSceneId: "crab_quiz_1_correct" },
+      { text: "⬆️ Forward", nextSceneId: "crab_quiz_1_wrong" },
+      { text: "⬇️ Backward", nextSceneId: "crab_quiz_1_wrong" },
+    ],
+  },
+  {
+    id: "crab_quiz_1_correct",
+    text: "🎉 'Perfect!' clicks Crusty as he scuttles sideways! 'We walk sideways! Our legs are built to move us side to side - it's much easier for us than walking forward!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 2", nextSceneId: "crab_quiz_2" }],
+  },
+  {
+    id: "crab_quiz_1_wrong",
+    text: "🦀 Crusty demonstrates by scuttling left and right: 'Watch how I move! We crabs don't walk like most animals. Look at the direction I'm going!' ⬅️➡️",
+    choices: [{ text: "🔄 Try again", nextSceneId: "crab_quiz_1" }],
+  },
+  {
+    id: "crab_quiz_2",
+    text: "🦀 Quiz 2: Crusty taps his shell with his claw: 'Our shells protect us, but they don't grow with us! When we get too big for our shell, what do we crabs do?' 🏠🔄",
+    choices: [
+      { text: "🔄 We molt and grow a new shell", nextSceneId: "crab_quiz_2_correct" },
+      { text: "🏠 We build a bigger shell", nextSceneId: "crab_quiz_2_wrong" },
+      { text: "🤝 We share shells with friends", nextSceneId: "crab_quiz_2_wrong" },
+    ],
+  },
+  {
+    id: "crab_quiz_2_correct",
+    text: "🎉 'Excellent!' Crusty flexes in his shell! 'We molt! We shed our old shell and grow a brand new, bigger one! We hide while our new shell hardens!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 3", nextSceneId: "crab_fun_fact_1" }],
+  },
+  {
+    id: "crab_fun_fact_1",
+    text: "💡 **Did you know?** 🦀\n\nCrabs can regenerate lost claws and legs! If we lose a claw in a fight or accident, we can grow a completely new one! It takes a few molts, but eventually it's as good as new! 🦾✨",
+    choices: [
+      { text: "🤔 Amazing regrowth! Continue", nextSceneId: "crab_quiz_3" },
+    ],
+  },
+  {
+    id: "crab_quiz_2_wrong",
+    text: "🦀 Crusty points to his hard shell: 'Our shells are part of our body! We can't build them or share them. When they get too small, we have to do something very special!' 🏠",
+    choices: [{ text: "🔄 Try again", nextSceneId: "crab_quiz_2" }],
+  },
+  {
+    id: "crab_quiz_3",
+    text: "🦀 Quiz 3 (Final): Crusty points to his eyes on stalks: 'Our eyes are very special! Unlike most animals, our eyes can do something amazing. What makes crab eyes so unique?' 👀🔄",
+    choices: [
+      {
+        text: "👀 Our eyes are on movable stalks",
+        nextSceneId: "crab_quiz_3_correct",
+      },
+      {
+        text: "👀 Our eyes can see underwater",
+        nextSceneId: "crab_quiz_3_wrong",
+      },
+      {
+        text: "👀 Our eyes change colors",
+        nextSceneId: "crab_quiz_3_wrong",
+      },
+    ],
+  },
+  {
+    id: "crab_quiz_3_correct",
+    text: "🎉 'Outstanding!' Crusty moves his eye stalks up and down! 'Our eyes are on stalks that we can move! This lets us see in all directions while hiding in the sand!' 👀✨",
+    choices: [{ text: "🎁 Receive Crusty's Gift", nextSceneId: "crab_reward" }],
+  },
+  {
+    id: "crab_quiz_3_wrong",
+    text: "🦀 Crusty moves his eye stalks to look at you: 'Look at my eyes! They're not just sitting in my head like yours. They can move around! This helps me see all around!' 👀",
+    choices: [{ text: "🔄 Try again", nextSceneId: "crab_quiz_3" }],
+  },
+  {
+    id: "crab_reward",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' clicks Crusty proudly! 'You've learned so much about crabs! As a reward for completing all 3 quizzes, I'm giving you my special Ocean Shell!' 🐚✨ Crusty tells you: 'This ocean shell will remind you of all the amazing things you learned about crabs today!' He gives you a beautiful pearlescent shell that sounds like ocean waves. 🦀💫\n\n*You received: 🐚 Ocean Shell!*</div>",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+      { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
+    ],
   },
 ];
 

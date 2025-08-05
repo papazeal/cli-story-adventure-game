@@ -13,7 +13,7 @@ All commands use `pnpm` as the package manager:
 
 ## What This Game Is
 
-**Forest Friends** is a fun quiz game for kids. Kids pick an animal, answer 4 quiz questions, and get a special gift. The game looks like a computer terminal and teaches cool animal facts.
+**Forest Friends** is a fun quiz game for kids. Kids pick an animal, answer 3 quiz questions with difficulty progression, and get a special gift. The game looks like a computer terminal and teaches cool animal facts.
 
 ### Tech Used
 - **Astro v5**: Makes the website
@@ -25,8 +25,9 @@ All commands use `pnpm` as the package manager:
 ### How It Works
 
 **Game Flow**: Simple steps:
-- Pick an animal → Answer 4 quiz questions → Get a gift
-- Each animal teaches different cool facts
+- Pick an animal → Answer 3 quiz questions (easy → medium → hard) → Get a gift  
+- Each animal teaches different cool facts with difficulty progression
+- **Fun facts** appear between Quiz 2 and Quiz 3 with bonus animal trivia
 - Quiz answers get mixed up so kids can't just remember spots
 
 **Game Memory**: Saves where you are in `gameStore.ts`:
@@ -39,20 +40,24 @@ All commands use `pnpm` as the package manager:
 - `LoadingText.svelte` - Makes text appear slowly like typing
 - `index.astro` - The web page
 
-**Quiz Sounds**: Three different sounds in `audio.ts`:
-- 🎊 **Super Happy** (5 notes): When you finish all 4 quizzes
+**Quiz Sounds**: Five different sounds in `audio.ts`:
+- 🎊 **Super Happy** (5 notes): When you finish all 3 quizzes
 - 🎉 **Happy** (3 notes): When you get a quiz right
+- ❌ **Gentle Sad** (3 notes): When you get a quiz wrong
+- 💡 **Curious** (4 notes): For fun facts between quizzes
 - ♪ **Simple** (2 notes): For everything else
 
 ### Current Game Content
 
 **Available Animals**:
-- 🦉 **Oliver the Owl** - 4 quizzes about night vision, head rotation, silent flight, asymmetrical ears
-- 🐱 **Whiskers the Cat** - 4 quizzes about balance/tails, paw pads, night vision, purring healing
+- 🦉 **Oliver the Owl** - 3 quizzes: night vision (easy) → silent flight (medium) → asymmetrical ears (hard)
+- 🐱 **Whiskers the Cat** - 3 quizzes: balance/tails (easy) → night vision (medium) → purring healing (hard)
+- 🐸 **Freddy the Frog** - 3 quizzes: jumping ability (easy) → skin breathing (medium) → metamorphosis (hard)
 
-**Quiz Topics by Animal**:
-- **Owl Facts**: Night vision, 270° head rotation, silent feathers, ear positioning
-- **Cat Facts**: Tail balance, soft paw pads, pupil dilation, purring vibrations
+**Quiz Difficulty Progression**:
+- **Easy**: Basic observable behaviors that kids can see or understand easily
+- **Medium**: Intermediate abilities that require some animal knowledge  
+- **Hard**: Advanced biological/scientific concepts that challenge learning
 
 ### How Files Work Together
 
@@ -73,32 +78,40 @@ src/
 
 ### Game Rules
 
-**Must Do**: Pick Animal → Answer 4 Quizzes → Get Gift
+**Must Do**: Pick Animal → Answer 3 Quizzes (Easy→Medium→Hard) → Get Gift
 
 Every animal works the same way:
 
 1. **Meet Animal**: Say hello to your animal friend
-2. **Quiz Time**: Answer 4 questions about cool animal facts
-3. **Mixed Answers**: Answers move around so you can't cheat  
-4. **Fun Sounds**: Different sounds for right/wrong/winning
-5. **Get Gift**: Win a special prize when done
+2. **Quiz 1 (Easy)**: Basic concept question
+3. **Quiz 2 (Medium)**: Intermediate ability question  
+4. **💡 Fun Fact**: Bonus trivia between Quiz 2 and 3
+5. **Quiz 3 (Hard)**: Advanced scientific question
+6. **Fun Sounds**: Different sounds for right/wrong/winning
+7. **Get Gift**: Win a special prize when done
 
 ### How Answer Mixing Works
 
 **Where**: `shuffleArray()` function in `Terminal.svelte`
 **What**: Only quiz answers get mixed up, menu choices stay the same
 **When**: Scenes with `quiz_` in the name (but not `_correct`/`_wrong`)
-**Keep Same**: Hint (🤔) and back (🔙) buttons stay at bottom
+**Keep Same**: Back (🔙) buttons stay at bottom
 
 ### Sound System
 
-**Three Different Sounds**:
+**Five Different Sounds**:
 ```typescript
-// Super happy sound when you finish all 4 quizzes
-rewardScenes: ["owl_reward", "cat_reward"] → "🎊 AMAZING! ALL DONE! 🎊"
+// Super happy sound when you finish all 3 quizzes
+rewardScenes: ["owl_reward", "cat_reward", "frog_reward"] → "🎊 AMAZING! ALL DONE! 🎊"
 
 // Happy sound for right answers  
 correctScenes: ["*_quiz_*_correct"] → "🎉 CORRECT!"
+
+// Gentle sad sound for wrong answers
+wrongScenes: ["*_quiz_*_wrong"] → "❌ WRONG"
+
+// Curious/interesting sound for fun facts
+funFactScenes: ["*_fun_fact_*"] → "💡 FUN FACT"
 
 // Simple sound for everything else
 allOtherChoices → "♪"
@@ -116,6 +129,7 @@ allOtherChoices → "♪"
 **Gifts You Can Get**:
 - 🪶 **Feather of Wisdom** - Oliver the Owl's Gift
 - ✨ **Golden Whisker** - Whiskers the Cat's Gift
+- 👑 **Lily Pad Crown** - Freddy the Frog's Gift
 
 ### How to Add New Animals
 

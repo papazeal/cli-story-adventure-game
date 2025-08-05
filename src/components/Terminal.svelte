@@ -137,6 +137,13 @@
         "crab_fun_fact_1",
       ];
 
+      const introScenes = [
+        "owl_intro",
+        "cat_intro",
+        "frog_intro",
+        "crab_intro",
+      ];
+
       if (rewardScenes.includes(selectedChoice.nextSceneId)) {
         // Super cheerful notes for reward scenes
         audioManager.playChoiceTone("🎊 AMAZING! ALL DONE! 🎊");
@@ -149,6 +156,9 @@
       } else if (funFactScenes.includes(selectedChoice.nextSceneId)) {
         // Curious/interesting tone for fun facts
         audioManager.playChoiceTone("💡 FUN FACT");
+      } else if (introScenes.includes(selectedChoice.nextSceneId)) {
+        // Friendly welcoming tone for animal introductions
+        audioManager.playChoiceTone("👋 HELLO FRIEND");
       } else {
         // Play simple note for all other choices
         audioManager.playChoiceTone("♪");

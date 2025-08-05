@@ -347,6 +347,10 @@ export class AudioManager {
       // Curious/interesting tone for fun facts - playful and intriguing
       return [440.0, 523.25, 587.33, 659.25]; // A4 -> C5 -> D5 -> E5 (ascending curiosity)
     }
+    if (text.includes("👋")) {
+      // Friendly welcoming tone for animal introductions - warm and inviting
+      return [523.25, 659.25, 523.25, 659.25]; // C5 -> E5 -> C5 -> E5 (friendly greeting)
+    }
 
     // Default based on emoji emotions
     if (text.includes("😊") || text.includes("😄") || text.includes("🎉")) {
@@ -356,8 +360,14 @@ export class AudioManager {
       return [440.0, 493.88, 440.0]; // A4 -> B4 -> A4 (questioning)
     }
 
-    // Default neutral choice
-    return [523.25, 587.33]; // C5 -> D5 (neutral positive)
+    // Default neutral choice - 3 variations for variety
+    const simpleVariations = [
+      [523.25, 587.33], // C5 -> D5 (neutral positive)
+      [440.0, 523.25], // A4 -> C5 (gentle rising)
+      [493.88, 523.25], // B4 -> C5 (warm rising)
+    ];
+    const randomIndex = Math.floor(Math.random() * simpleVariations.length);
+    return simpleVariations[randomIndex];
   }
 
   // Keep the old method for backward compatibility (now unused)

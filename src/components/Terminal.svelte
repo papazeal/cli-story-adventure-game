@@ -41,6 +41,11 @@
       name: "🐚 Ocean Shell",
       description: "Crusty the Crab",
     },
+    {
+      id: "ancient_tusk",
+      name: "🦴 Ancient Tusk",
+      description: "Manny the Mammoth",
+    },
   ];
 
   function getOwnedItems(): string[] {
@@ -98,6 +103,7 @@
         "cat_reward",
         "frog_reward",
         "crab_reward",
+        "mammoth_reward",
       ];
 
       const correctScenes = [
@@ -113,6 +119,9 @@
         "crab_quiz_1_correct",
         "crab_quiz_2_correct",
         "crab_quiz_3_correct",
+        "mammoth_quiz_1_correct",
+        "mammoth_quiz_2_correct",
+        "mammoth_quiz_3_correct",
       ];
 
       const wrongScenes = [
@@ -128,6 +137,9 @@
         "crab_quiz_1_wrong",
         "crab_quiz_2_wrong",
         "crab_quiz_3_wrong",
+        "mammoth_quiz_1_wrong",
+        "mammoth_quiz_2_wrong",
+        "mammoth_quiz_3_wrong",
       ];
 
       const funFactScenes = [
@@ -135,6 +147,7 @@
         "cat_fun_fact_1",
         "frog_fun_fact_1",
         "crab_fun_fact_1",
+        "mammoth_fun_fact_1",
       ];
 
       const introScenes = [
@@ -142,6 +155,7 @@
         "cat_intro",
         "frog_intro",
         "crab_intro",
+        "mammoth_intro",
       ];
 
       if (rewardScenes.includes(selectedChoice.nextSceneId)) {
@@ -201,6 +215,8 @@
         saveItem("lily_pad_crown");
       } else if (scene.id === "crab_reward") {
         saveItem("ocean_shell");
+      } else if (scene.id === "mammoth_reward") {
+        saveItem("ancient_tusk");
       }
 
       addLine("output", "");

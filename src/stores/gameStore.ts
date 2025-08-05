@@ -110,6 +110,7 @@ const scenes: Scene[] = [
       { text: "🐱 Whiskers the Cat", nextSceneId: "cat_intro" },
       { text: "🐸 Freddy the Frog", nextSceneId: "frog_intro" },
       { text: "🦀 Crusty the Crab", nextSceneId: "crab_intro" },
+      { text: "🦣 Manny the Mammoth", nextSceneId: "mammoth_intro" },
       { text: "🔙 Back to Menu", nextSceneId: "welcome" },
     ],
   },
@@ -205,7 +206,7 @@ const scenes: Scene[] = [
   },
   {
     id: "owl_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' hoots Oliver proudly! 'You've learned so much about owls! As a reward for completing all 3 quizzes, I'm giving you my special Feather of Wisdom!' 🪶✨ Oliver tells you: 'This feather will remind you of all the amazing things you learned about owls today!' He gives you a beautiful owl feather that glows softly. 🦉💫\n\n*You received: 🪶 Feather of Wisdom!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' hoots Oliver proudly! 'You've learned so much about owls! I'm giving you my special Feather of Wisdom!' 🪶✨ Oliver tells you: 'This feather will remind you of all the amazing things you learned about owls today!' He gives you a beautiful owl feather that glows softly. 🦉💫\n\n*You received: 🪶 Feather of Wisdom!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
@@ -292,7 +293,7 @@ const scenes: Scene[] = [
   },
   {
     id: "cat_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' purrs Whiskers proudly! 'You've learned so much about cats! As a reward for completing all 3 quizzes, I'm giving you my special Golden Whisker!' 🥇✨ Whiskers tells you: 'This golden whisker will remind you of all the amazing things you learned about cats today!' He gives you one of his magical golden whiskers that shimmers softly. 🐱💫\n\n*You received: ✨ Golden Whisker!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' purrs Whiskers proudly! 'You've learned so much about cats! I'm giving you my special Golden Whisker!' 🥇✨ Whiskers tells you: 'This golden whisker will remind you of all the amazing things you learned about cats today!' He gives you one of his magical golden whiskers that shimmers softly. 🐱💫\n\n*You received: ✨ Golden Whisker!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
@@ -377,7 +378,7 @@ const scenes: Scene[] = [
   },
   {
     id: "frog_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' croaks Freddy proudly! 'You've learned so much about frogs! As a reward for completing all 3 quizzes, I'm giving you my special Lily Pad Crown!' 👑✨ Freddy tells you: 'This lily pad crown will remind you of all the amazing things you learned about frogs today!' He gives you a beautiful crown made of lily pads that glows with pond magic. 🐸💫\n\n*You received: 👑 Lily Pad Crown!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' croaks Freddy proudly! 'You've learned so much about frogs! I'm giving you my special Lily Pad Crown!' 👑✨ Freddy tells you: 'This lily pad crown will remind you of all the amazing things you learned about frogs today!' He gives you a beautiful crown made of lily pads that glows with pond magic. 🐸💫\n\n*You received: 👑 Lily Pad Crown!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
@@ -826,7 +827,98 @@ const scenes: Scene[] = [
   },
   {
     id: "crab_reward",
-    text: "<div class='text-amber-300'>🎉 'Congratulations!' clicks Crusty proudly! 'You've learned so much about crabs! As a reward for completing all 3 quizzes, I'm giving you my special Ocean Shell!' 🐚✨ Crusty tells you: 'This ocean shell will remind you of all the amazing things you learned about crabs today!' He gives you a beautiful pearlescent shell that sounds like ocean waves. 🦀💫\n\n*You received: 🐚 Ocean Shell!*</div>",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' clicks Crusty proudly! 'You've learned so much about crabs! I'm giving you my special Ocean Shell!' 🐚✨ Crusty tells you: 'This ocean shell will remind you of all the amazing things you learned about crabs today!' He gives you a beautiful pearlescent shell that sounds like ocean waves. 🦀💫\n\n*You received: 🐚 Ocean Shell!*</div>",
+    choices: [
+      { text: "🏠 Main Menu", nextSceneId: "welcome" },
+      { text: "📚 Learn About Another Animal", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "mammoth_intro",
+    text: "🦣 Hi! I'm Manny the Mammoth! 🧊 Want to discover amazing mammoth facts? ✨",
+    choices: [
+      { text: "📚 Start Quiz 1", nextSceneId: "mammoth_quiz_1" },
+      { text: "🔙 Choose Different Animal", nextSceneId: "intro" },
+    ],
+  },
+  {
+    id: "mammoth_quiz_1",
+    text: "🦣 Quiz 1: Manny stomps his huge feet and asks: 'We mammoths were some of the biggest land animals that ever lived! How big were we compared to today's elephants?' 🐘📏",
+    choices: [
+      { text: "🦣 Much bigger than elephants", nextSceneId: "mammoth_quiz_1_correct" },
+      { text: "🐘 About the same size as elephants", nextSceneId: "mammoth_quiz_1_wrong" },
+      { text: "🐭 Smaller than elephants", nextSceneId: "mammoth_quiz_1_wrong" },
+    ],
+  },
+  {
+    id: "mammoth_quiz_1_correct",
+    text: "🎉 'Exactly!' trumpets Manny proudly! 'We mammoths were much bigger than today's elephants! Some of us were over 11 feet tall and weighed as much as four cars!' ✨",
+    choices: [{ text: "📚 Continue to Quiz 2", nextSceneId: "mammoth_quiz_2" }],
+  },
+  {
+    id: "mammoth_quiz_1_wrong",
+    text: "🦣 Manny shows you how huge he is by stretching up tall: 'Look at how big I am! We mammoths were much larger than our elephant cousins today!' 📏",
+    choices: [{ text: "🔄 Try again", nextSceneId: "mammoth_quiz_1" }],
+  },
+  {
+    id: "mammoth_quiz_2",
+    text: "🦣 Quiz 2: Manny fluffs his thick woolly coat: 'We lived during the Ice Age when it was very, very cold! Our bodies had something special to keep us warm. What helped us survive the freezing cold?' ❄️🧥",
+    choices: [
+      { text: "🧥 Thick woolly fur coat", nextSceneId: "mammoth_quiz_2_correct" },
+      { text: "🔥 We made fires to stay warm", nextSceneId: "mammoth_quiz_2_wrong" },
+      { text: "🏠 We lived in warm caves", nextSceneId: "mammoth_quiz_2_wrong" },
+    ],
+  },
+  {
+    id: "mammoth_quiz_2_correct",
+    text: "🎉 'Perfect!' Manny shows off his fluffy coat! 'Our thick woolly fur kept us warm in temperatures as cold as -40 degrees! We were like walking winter coats!' ✨",
+    choices: [
+      { text: "📚 Continue to Quiz 3", nextSceneId: "mammoth_fun_fact_1" },
+    ],
+  },
+  {
+    id: "mammoth_fun_fact_1",
+    text: "💡 **Did you know?** 🦣\n\nMammoths had tusks that could grow up to 16 feet long! We used them like tools - to dig through snow for food, fight off predators, and show off to other mammoths! 🦴✨",
+    choices: [
+      { text: "🤔 Amazing tusks! Continue", nextSceneId: "mammoth_quiz_3" },
+    ],
+  },
+  {
+    id: "mammoth_quiz_2_wrong",
+    text: "🦣 Manny shivers and fluffs his fur: 'We didn't have fire or caves! Feel how thick and warm my coat is - this is what kept us cozy in the ice and snow!' ❄️🧥",
+    choices: [{ text: "🔄 Try again", nextSceneId: "mammoth_quiz_2" }],
+  },
+  {
+    id: "mammoth_quiz_3",
+    text: "🦣 Quiz 3 (Final): Manny looks thoughtful: 'We mammoths lived long ago but aren't around anymore. However, humans today can still learn about us! How do scientists know so much about mammoths today?' 🔬🦴",
+    choices: [
+      {
+        text: "🦴 They found our bones and fossils",
+        nextSceneId: "mammoth_quiz_3_correct",
+      },
+      {
+        text: "📚 They read about us in old books",
+        nextSceneId: "mammoth_quiz_3_wrong",
+      },
+      {
+        text: "🎬 They saw us in movies",
+        nextSceneId: "mammoth_quiz_3_wrong",
+      },
+    ],
+  },
+  {
+    id: "mammoth_quiz_3_correct",
+    text: "🎉 'Outstanding!' Manny stamps excitedly! 'Scientists found our fossils frozen in ice and buried in the ground! Some were so well-preserved they could see our fur and food!' 🦴✨",
+    choices: [{ text: "🎁 Receive Manny's Gift", nextSceneId: "mammoth_reward" }],
+  },
+  {
+    id: "mammoth_quiz_3_wrong",
+    text: "🦣 Manny points to his tusks: 'Think about it - we lived so long ago! How would scientists know about ancient animals? They study something we left behind in the earth!' 🦴",
+    choices: [{ text: "🔄 Try again", nextSceneId: "mammoth_quiz_3" }],
+  },
+  {
+    id: "mammoth_reward",
+    text: "<div class='text-amber-300'>🎉 'Congratulations!' trumpets Manny proudly! 'You've learned so much about mammoths! I'm giving you my special Ancient Tusk!' 🦴✨ Manny tells you: 'This ancient tusk will remind you of all the amazing things you learned about mammoths today!' He gives you a beautiful ivory tusk that glows with prehistoric magic. 🦣💫\n\n*You received: 🦴 Ancient Tusk!*</div>",
     choices: [
       { text: "🏠 Main Menu", nextSceneId: "welcome" },
       { text: "📚 Learn About Another Animal", nextSceneId: "intro" },

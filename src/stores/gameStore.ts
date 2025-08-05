@@ -85,17 +85,14 @@ const scenes: Scene[] = [
     choices: [
       { text: "🚀 Start Game", nextSceneId: "intro" },
       { text: "🎁 Gift Collection", nextSceneId: "items" },
-      { text: "❓ How to Play", nextSceneId: "help" },
+      { text: "ℹ️ About", nextSceneId: "help" },
       // { text: "📝 What's New", nextSceneId: "changelog" },
     ],
   },
   {
     id: "help",
-    text: "📖 How to Play:\n\n• 🦉 Choose an animal to learn about\n• 📚 Complete 3 fun fact quizzes\n• 🎁 Earn a special gift from your animal friend\n• 🔄 More animals coming soon!",
-    choices: [
-      { text: "🚀 Start Game", nextSceneId: "intro" },
-      { text: "🔙 Back to Menu", nextSceneId: "welcome" },
-    ],
+    text: '• 🦉 Choose an animal to learn about\n• 🎁 Complete quizzes to earn gift\n• 🔄 More animals coming soon!\n• 🐙 <a href="https://github.com/papazeal/forest-friends" target="_blank">GitHub Link</a>',
+    choices: [{ text: "🔙 Back to Menu", nextSceneId: "welcome" }],
   },
   {
     id: "changelog",
@@ -769,15 +766,23 @@ const scenes: Scene[] = [
     id: "crab_quiz_2",
     text: "🦀 Quiz 2: Crusty taps his shell with his claw: 'Our shells protect us, but they don't grow with us! When we get too big for our shell, what do we crabs do?' 🏠🔄",
     choices: [
-      { text: "🔄 We molt and grow a new shell", nextSceneId: "crab_quiz_2_correct" },
+      {
+        text: "🔄 We molt and grow a new shell",
+        nextSceneId: "crab_quiz_2_correct",
+      },
       { text: "🏠 We build a bigger shell", nextSceneId: "crab_quiz_2_wrong" },
-      { text: "🤝 We share shells with friends", nextSceneId: "crab_quiz_2_wrong" },
+      {
+        text: "🤝 We share shells with friends",
+        nextSceneId: "crab_quiz_2_wrong",
+      },
     ],
   },
   {
     id: "crab_quiz_2_correct",
     text: "🎉 'Excellent!' Crusty flexes in his shell! 'We molt! We shed our old shell and grow a brand new, bigger one! We hide while our new shell hardens!' ✨",
-    choices: [{ text: "📚 Continue to Quiz 3", nextSceneId: "crab_fun_fact_1" }],
+    choices: [
+      { text: "📚 Continue to Quiz 3", nextSceneId: "crab_fun_fact_1" },
+    ],
   },
   {
     id: "crab_fun_fact_1",
